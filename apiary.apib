@@ -1,37 +1,70 @@
 FORMAT: 1A
 
-# Mirmidon
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+# Mirmidon API
+Documentation Mirmidon API.
 
-# Fieldsites
-Notes related resources of the **Mirmidon API**
+## Error States
+The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.
 
+# Mirmidon API Root [/]
+Point d'entrée de l'API.
 
+Cette ressource n'a aucun attribut.
 
-## Note [/notes/{id}/{token}]
-A single Note object with all its details
+## Retrieve the Entry Point [GET]
 
-+ Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
-    + token (required, string, `foo` ) ... Test.
-
-### Retrieve a Note [GET]
 + Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
+    + Headers
+    
+            "Accept":"application/json",
+            "Content-Type":"application/json"
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            {
+                
+            }
 
-### Remove a Note [DELETE]
+## Fieldsite [/explorer/fieldsite]
+L'objet fieldsite
+
+Cette ressource dispose des attributs suivants: 
+
+- id
+- name
+- creationdate
+
+Le champ *id* et  *created_at* sont assignés par l'API au moment de la création de la ressource. 
+
+
++ Model (application/hal+json)
+
+    Représentation JSON de la ressource. Veuillez noter que la ressource est elle-même contenu dans le champ "data" de la réponse.
+
+    + Body
+
+            {
+                "id": 1,
+                "name": "Taiwan",
+                "creationDate": "2014-11-04 12:21:26.999"
+            }
+
+### Récupération de la liste des fieldsites [GET]
++ Response 200
+    
+### Suppression d'un fieldsite [DELETE]
 + Response 204
 
-### Update a Note [PUT]
-+ Response 200 (application/json)
+### Création d'un fieldsite [POST]
+Pour créer un fieldsite, fournir simplement le champ *name* du nouveau fieldsite. 
 
-    + Body
++ Request (application/json)
+
+        {
+            "name": "Taiwan"
+        }
+
++ Response 201
+
+    [Fieldsite][]
     
-            { "id": 2, "title": " Updated title" }
