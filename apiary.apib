@@ -28,37 +28,36 @@ Cette ressource n'a aucun attribut.
                 
             }
 
-## Fieldsite [/explorer/fieldsite]
-L'objet fieldsite
-
-Cette ressource dispose des attributs suivants: 
-
-- id
-- name
-- creationdate
-
-Le champ *id* et  *created_at* sont assignés par l'API au moment de la création de la ressource. 
-
-
-+ Model (application/json)
-
-    Représentation JSON de la ressource. Veuillez noter que la ressource est elle-même contenu dans le champ "data" de la réponse.
+## Liste des fieldsites [/explorer/fieldsite/list]
+### GET
++ Response 200
 
     + Body
-
-            {
-                "id": 1,
-                "name": "Taiwan",
-                "creationDate": "2014-11-04 12:21:26.999"
-            }
-
-### Récupération de la liste des fieldsites [GET]
-+ Response 200
     
-### Suppression d'un fieldsite [DELETE]
-+ Response 204
+            {
+                {
+                "data":
+                        {
+                            "0":
+                                {
+                                    "id": 1,
+                                    "name": "Taiwan",
+                                    "creationDate": "2014-11-04 12:21:26.999"
+                                },
+                                ...
+                        },
+                "code": 0,
+                "message": ""
+                }
+            }
+    
+## Ajouter un fieldsite [/explorer/fieldsite/add]
+### POST
++ Response 200
 
-### Création d'un fieldsite [POST]
+
+## Supprimer un fieldsite [/explorer/fieldsite/remove]
+### POST
 Pour créer un fieldsite, fournir simplement le champ *name* du nouveau fieldsite. 
 
 + Request (application/json)
@@ -69,8 +68,7 @@ Pour créer un fieldsite, fournir simplement le champ *name* du nouveau fieldsit
 
 + Response 201
 
-    [Fieldsite][]
-    
+
 # Group Explorer
 Explorer de **Mirmidon-unstable API**
 
