@@ -15,7 +15,7 @@ Point d'entrée de l'API.
 Cette ressource n'a aucun attribut.
 + Response 200
     +Headers
-    
+
             Accept:application/json,
             Content-Type:application/json
 
@@ -23,12 +23,12 @@ Cette ressource n'a aucun attribut.
 ### GET
 + Response 200
     + Headers
-    
+
             Accept:application/json,
             Content-Type:application/json
 
     + Body
-    
+
             [{
                "data":
                {
@@ -50,9 +50,9 @@ Cette ressource n'a aucun attribut.
                "message": ""
             }]
 
- 
+
 ## Ajouter un fieldsite [/explorer/fieldsite/add]
-Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsite. 
+Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsite.
 
 ### POST
 
@@ -65,7 +65,7 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
 
 + Response 200
     + Headers
-    
+
             Accept:application/json,
             Content-Type:application/json
 
@@ -81,7 +81,7 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
                         "creationDate": "2014-11-04 12:21:26.999"
                     }
             }]
-            
+
 
 ## Supprimer un fieldsite [/explorer/fieldsite/remove]
 ### POST
@@ -96,7 +96,7 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
 + Response 200
 
     + Body
-    
+
             [{
                 "code":0,
                 "message":null,
@@ -108,7 +108,19 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
     **Attention, normalement le code HTTP devrait être différent de 200, la réponse en cas d'erreur est correcte mais pas le code qui reste à 200**
 
     + Body
-    
+
+            [{
+                "code": 2,
+                "message": "Impossible to find speficied fieldsite",
+                "data": null
+            }]
+
++ Response 400
+
+    **Attention, normalement le code HTTP devrait être différent de 200, la réponse en cas d'erreur est correcte mais pas le code qui reste à 200**
+
+    + Body
+
             [{
                 "code": 2,
                 "message": "Impossible to find speficied fieldsite",
@@ -121,12 +133,12 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
 Explorer de **Mirmidon-unstable API**
 
     More to come...
-    
+
 # Group SAMPLE Messages
 Group of all messages-related resources.
 
 ## My Message [/message/{id}]
-Here we have added the message `id` parameter as an [URI Template variable](http://tools.ietf.org/html/rfc6570) in the Message resource's URI. 
+Here we have added the message `id` parameter as an [URI Template variable](http://tools.ietf.org/html/rfc6570) in the Message resource's URI.
 Note the parameter name `id` is enclosed in curly brackets. We will discuss this parameter in the `Parameters` section bellow, where we will also set its example value to `1` and declare it of an arbitrary 'number' type.
 
 + Parameters
@@ -136,7 +148,7 @@ Note the parameter name `id` is enclosed in curly brackets. We will discuss this
 ### Retrieve a Message [GET]
 
 + Request Plain Text Message
-    
+
     + Headers
 
             Accept: text/plain
@@ -152,7 +164,7 @@ Note the parameter name `id` is enclosed in curly brackets. We will discuss this
             Hello World!
 
 + Request JSON Message
-    
+
     + Headers
 
             Accept: application/json
@@ -165,10 +177,10 @@ Note the parameter name `id` is enclosed in curly brackets. We will discuss this
 
     + Body
 
-            { 
+            {
               "id": 1,
-              "message": "Hello World!" 
-            }      
+              "message": "Hello World!"
+            }
 
 ### Update a Message [PUT]
 
@@ -186,7 +198,7 @@ Note the parameter name `id` is enclosed in curly brackets. We will discuss this
 A resource representing all of my messages in the system.
 
 We have added the query URI template parameter - `limit`. This parameter is used for limiting the number of results returned by some actions on this resource. It does not affect every possible action of this resource therefore we will discuss it only at the particular action level below.
- 
+
 ### Retrieve all Messages [GET]
 
 + Parameters
@@ -194,7 +206,7 @@ We have added the query URI template parameter - `limit`. This parameter is used
     + limit = `20` (optional, number) ... The maximum number of results to return.
 
 + Response 200 (application/json)
- 
+
         [
           {
             "id": 1,
