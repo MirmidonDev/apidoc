@@ -76,40 +76,60 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
     + Schema
 
             {
-                "type": "object",
-                "required": true,
-                "properties": {
-                    "code": {
-                        "type": "number",
-                        "required": true
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "id": "http://jsonschema.net#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "id": "http://jsonschema.net/code#",
+                  "type": "integer",
+                  "default": 0,
+                  "additionalProperties": false
+                },
+                "message": {
+                  "id": "http://jsonschema.net/message#",
+                  "type": "null",
+                  "default": null,
+                  "additionalProperties": false
+                },
+                "data": {
+                  "id": "http://jsonschema.net/data#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "id": "http://jsonschema.net/data/id#",
+                      "type": "integer",
+                      "additionalProperties": false
                     },
-                    "message": {
-                        "type": ["string", "null"],
-                        "required": true
+                    "name": {
+                      "id": "http://jsonschema.net/data/name#",
+                      "type": "string",
+                      "additionalProperties": false
                     },
-                    "data": {
-                        "type": "object",
-                        "required": true
+                    "creationDate": {
+                      "id": "http://jsonschema.net/data/creationDate#",
+                      "type": "string",
+                      "additionalProperties": false
                     }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "creationDate"
+                  ]
                 }
-            }
-
-    + Body
-
-            {
-                "code": 0,
-                "message": null,
-                "data":
-                    {
-                        "id": 2,
-                        "name": "Taiwan",
-                        "creationDate": "2014-11-04 12:21:26.999"
-                    }
+              },
+              "required": [
+                "code",
+                "message",
+                "data"
+              ]
             }
             
 
 ## Supprimer un fieldsite [/explorer/fieldsite/remove]
-
 
     Donner l'ID du fieldsite à supprimer dans le champ 'data'
 
@@ -130,6 +150,27 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
                 "data":null
             }
 
+    + Schema
+
+            {
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "code": {
+                        "type": "number",
+                        "required": true
+                    },
+                    "message": {
+                        "type": ["string", "null"],
+                        "required": true
+                    },
+                    "data": {
+                        "type": ["string", "null"],
+                        "required": true
+                    }
+                }
+            }
+
 + Response 500
 
     **Attention, normalement le code HTTP devrait être différent de 200, la réponse en cas d'erreur est correcte mais pas le code qui reste à 200**
@@ -148,13 +189,3 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
 Explorer de **Mirmidon-unstable API**
 
     More to come...
-    
-# Product 
-A product from Acme's catalog
-
-## Properties
-
-- id: 1 (number, required) - The unique identifier for a product
-- name: A green door (string, required) - Name of the product
-- price: 12.50 (number, required)
-- tags: home, green (array[string])
