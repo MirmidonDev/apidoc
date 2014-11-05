@@ -34,7 +34,7 @@ Cette ressource n'a aucun attribut.
 
     + Body
     
-            [{
+            {
                "data":
                {
                    "0":
@@ -53,7 +53,7 @@ Cette ressource n'a aucun attribut.
                },
                "code": 0,
                "message": ""
-            }]
+            }
 
  
 ## Ajouter un fieldsite [/explorer/fieldsite/add]
@@ -63,20 +63,19 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
 
 + Request (application/json)
 
-        [{
+        {
             "name": "Taiwan"
-        }]
+        }
 
 
 + Response 200
     + Headers
     
-            Accept:application/json,
             Content-Type:application/json
 
     + Body
 
-            [{
+            {
                 "code": 0,
                 "message": null,
                 "data":
@@ -85,30 +84,30 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
                         "name": "SaintJean",
                         "creationDate": "2014-11-04 12:21:26.999"
                     }
-            }]
+            }
             
 
 ## Supprimer un fieldsite [/explorer/fieldsite/remove]
-### POST
+
 
     Donner l'ID du fieldsite à supprimer dans le champ 'data'
-    
+
+### POST
 + Request (application/json)
 
-
-        [{
+        {
             "data": 3
-        }]
+        }
 
 + Response 200
 
     + Body
     
-            [{
+            {
                 "code":0,
                 "message":null,
                 "data":null
-            }]
+            }
 
 + Response 500
 
@@ -116,11 +115,11 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
 
     + Body
     
-            [{
+            {
                 "code": 2,
                 "message": "Impossible to find speficied fieldsite",
                 "data": null
-            }]
+            }
 
 
 
