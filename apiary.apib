@@ -76,60 +76,40 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
     + Schema
 
             {
-              "$schema": "http://json-schema.org/draft-04/schema#",
-              "id": "http://jsonschema.net#",
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "code": {
-                  "id": "http://jsonschema.net/code#",
-                  "type": "integer",
-                  "default": 0,
-                  "additionalProperties": false
-                },
-                "message": {
-                  "id": "http://jsonschema.net/message#",
-                  "type": "null",
-                  "default": null,
-                  "additionalProperties": false
-                },
-                "data": {
-                  "id": "http://jsonschema.net/data#",
-                  "type": "object",
-                  "additionalProperties": false,
-                  "properties": {
-                    "id": {
-                      "id": "http://jsonschema.net/data/id#",
-                      "type": "integer",
-                      "additionalProperties": false
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "code": {
+                        "type": "number",
+                        "required": true
                     },
-                    "name": {
-                      "id": "http://jsonschema.net/data/name#",
-                      "type": "string",
-                      "additionalProperties": false
+                    "message": {
+                        "type": ["string", "null"],
+                        "required": true
                     },
-                    "creationDate": {
-                      "id": "http://jsonschema.net/data/creationDate#",
-                      "type": "string",
-                      "additionalProperties": false
+                    "data": {
+                        "type": "object",
+                        "required": true
                     }
-                  },
-                  "required": [
-                    "id",
-                    "name",
-                    "creationDate"
-                  ]
                 }
-              },
-              "required": [
-                "code",
-                "message",
-                "data"
-              ]
+            }
+
+    + Body
+
+            {
+                "code": 0,
+                "message": null,
+                "data":
+                    {
+                        "id": 2,
+                        "name": "Taiwan",
+                        "creationDate": "2014-11-04 12:21:26.999"
+                    }
             }
             
 
 ## Supprimer un fieldsite [/explorer/fieldsite/remove]
+
 
     Donner l'ID du fieldsite à supprimer dans le champ 'data'
 
@@ -148,27 +128,6 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
                 "code":0,
                 "message":null,
                 "data":null
-            }
-
-    + Schema
-
-            {
-                "type": "object",
-                "required": true,
-                "properties": {
-                    "code": {
-                        "type": "number",
-                        "required": true
-                    },
-                    "message": {
-                        "type": ["string", "null"],
-                        "required": true
-                    },
-                    "data": {
-                        "type": ["string", "null"],
-                        "required": true
-                    }
-                }
             }
 
 + Response 500
