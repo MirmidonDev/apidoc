@@ -9,64 +9,111 @@ The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-htt
 # Group Fieldsites
 Gestion des fieldsites de **Mirmidon-unstable API**
 
-# Mirmidon API Root [/]
+# Base [/]
 Point d'entrée de l'API.
 
 Cette ressource n'a aucun attribut.
-
-## Retrieve the Entry Point [GET]
-
-+ Response 200 (application/json)
-    + Headers
++ Response 200
+    +Headers
     
-            "Accept":"application/json",
-            "Content-Type":"application/json"
-
-    + Body
-
-            {
-                
-            }
+            Accept:application/json,
+            Content-Type:application/json
 
 ## Liste des fieldsites [/explorer/fieldsite/list]
 ### GET
 + Response 200
+    +Headers
+    
+            Accept:application/json,
+            Content-Type:application/json
 
     + Body
     
-            {
-                {
-                "data":
-                        {
-                            "0":
-                                {
-                                    "id": 1,
-                                    "name": "Taiwan",
-                                    "creationDate": "2014-11-04 12:21:26.999"
-                                },
-                                ...
-                        },
-                "code": 0,
-                "message": ""
-                }
-            }
-    
+            [{
+               "data":
+               {
+                   "0":
+                   {
+                       "id": 1,
+                       "name": "Taiwan",
+                       "creationDate": "2014-11-04 12:21:26.999"
+                   },
+                    "0":
+                   {
+                       "id": 2,
+                       "name": "Fieldsite2",
+                       "creationDate": "2014-11-04 12:24:22.548"
+                   },
+                   ... More ...
+               },
+               "code": 0,
+               "message": ""
+            }]
+
+ 
 ## Ajouter un fieldsite [/explorer/fieldsite/add]
-### POST
-+ Response 200
-
-
-## Supprimer un fieldsite [/explorer/fieldsite/remove]
 ### POST
 Pour créer un fieldsite, fournir simplement le champ *name* du nouveau fieldsite. 
 
 + Request (application/json)
 
-        {
+        [{
             "name": "Taiwan"
-        }
+        }]
 
-+ Response 201
+
++ Response 200
+    +Headers
+    
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+            [{
+                "code": 0,
+                "message": null,
+                "data":
+                    {
+                        "id": 2,
+                        "name": "SaintJean",
+                        "creationDate": "2014-11-04 12:21:26.999"
+                    }
+            }]
+            
+
+## Supprimer un fieldsite [/explorer/fieldsite/remove]
+### POST
++ Request (application/json)
+
+        Donner l'ID du fieldsite à supprimer dans le champ *data*
+
+        [{
+            "data": 3
+        }]
+
++ Response 200
+
+    + Body
+    
+            [{
+                "code":0,
+                "message":null,
+                "data":null
+            }]
+
++ Response 500
+
+    **Attention, normalement le code HTTP devrait être différent de 200, la réponse en cas d'erreur est correcte mais pas le code qui reste à 200**
+
+    + Body
+    
+            [{
+                "code": 2,
+                "message": "Impossible to find speficied fieldsite",
+                "data": null
+            }]
+
 
 
 # Group Explorer
