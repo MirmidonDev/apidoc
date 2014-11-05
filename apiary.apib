@@ -73,6 +73,27 @@ Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsit
     
             Content-Type:application/json
 
+    + Schema
+
+            {
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "code": {
+                        "type": "number",
+                        "required": true
+                    },
+                    "message": {
+                        "type": ["string", "null"],
+                        "required": true
+                    },
+                    "data": {
+                        "type": "object",
+                        "required": true
+                    }
+                }
+            }
+
     + Body
 
             {
