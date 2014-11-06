@@ -1,0 +1,152 @@
+# Group Explorer
+Explorer de **Mirmidon-unstable API**
+
+## Phenomena list [/explorer/phenomena/list]
+    ERREUR: API en erreur @todo : documenter dès correction.
+
+### GET
+
++ Response 200
+    + Headers
+
+            Content-Type:text/html; charset=utf-8
+
+    + Body
+
+            Execution exception
+            [UnconvertibleObjectException: No converter found.]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 524.
+
+## Phenomena ASCII list [/explorer/phenomena/ascii/list]
+
+### GET
+
++ Response 200
+    + Headers
+
+            Content-Type:application/json
+
+    + Body
+
+            Execution exception
+            [UnconvertibleObjectException: No converter found.]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 532.
+
+## Phenonema NetCDF list [/explorer/phenomena/netcdf/list]
+
+### GET
+
++ Response 200
+    + Headers
+
+            Content-Type:application/json
+
+    + Body
+
+            Execution exception
+            [UnconvertibleObjectException: No converter found.]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 540.
+
+## Phenomena list by Fieldset [/explorer/phenomena/by-fieldsite?id={id}]
+
+### GET
+
++ Parameters
+
+    + id = `` (required, integer, `1`) ... Fieldsite Identifier.
+
++ Response 200
+    + Headers
+
+            Content-Type:application/json
+
+    + Body
+
+            {
+
+            "data": {
+                    "phenomenon": {
+                                    "0":{
+                                            "standard_name": "pressure",
+                                            "variables": {
+                                            "0": {
+                                                    "standard_name": "pressure",
+                                                    "unit": "",
+                                                    "type": "PhenomenaVariable",
+                                                    "data_type": "double",
+                                                    "minimum_value": 0,
+                                                    "maximun_value": 1,
+                                                    "fill_value": "NaN",
+                                                    "scale": 1,
+                                                    "offset": 0,
+                                                    "units": 
+                                                        {
+                                                            "0": "Pa",
+                                                            "1": "hPa",
+                                                            "2": "kPa"
+                                                        }
+                                                    },
+                                                    //Cut example, there can be more variables
+                                            }
+                                        },
+                                        //Cut example, there can be more phenomenon
+                                    }
+                    }
+
+            }
+
+## Phenomena Info [/explorer/phenomena/info]
+Item not documented
+
+### GET
+
++ Response 400
+    + Body
+
+            <How to use ?>
+
+## Phenomena Plot [/explorer/phenomena/plot]
+Item not documented 
+
+### GET
+
++ Response 400
+    + Body
+
+            <How to use ?>
+
+## List coordinate reference system [/explorer/coordinate-reference-system/list]
+Item not documented - High load time.
+
+### GET
++ Response 200
+    + Headers
+
+            Content-Type:application/json
+
+    + Body
+
+            {  
+                "data":{  
+                    "0":{  
+                        "id":"CRS:84",
+                        "name":"WGS84",
+                        "remarks":"",
+                        "scope":""
+                    },
+                    "1":{  
+                        "id":"EPSG:4326",
+                        "name":"WGS 84",
+                        "remarks":"",
+                        "scope":"Horizontal component of 3D system. Used by the GPS satellite navigation system and for NATO military geodetic surveying."
+                    },
+                    "2":{  
+                        "id":"EPSG:2154",
+                        "name":"RGF93 / Lambert-93",
+                        "remarks":"",
+                        "scope":"Large and medium scale topographic mapping and engineering survey."
+                    }
+                },
+                "code":0,
+                "message":""
+            }

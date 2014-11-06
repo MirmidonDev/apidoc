@@ -1,0 +1,337 @@
+# Group Aggregator
+Aggregator de **Mirmidon-unstable API**
+
+## Lister les formats [/aggregator]
+
+### GET
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+            {
+              data:
+              {
+                supportedFormats:
+                {
+                  0: {
+                    id: 3,
+                    name: "Import an ASCII file",
+                    slug: "import-phenomena-ascii",
+                    abstract: "Import a ascii file into Mirmidon",
+                    actions: {
+                      describe: "/aggregator/importPhenomena/from-ascii/describe",
+                      execute: "/aggregator/importPhenomena/from-ascii/execute",
+                      status: "/aggregator/status"
+                    }
+                  },
+                  1: {
+                    id: 4,
+                    name: "Import a NetCDF file",
+                    slug: "import-phenomena-netcdf",
+                    abstract: "Import a netcdf file into Mirmidon",
+                    actions: {
+                      describe: "/aggregator/importPhenomena/from-netcdf/describe",
+                      execute: "/aggregator/importPhenomena/from-netcdf/execute",
+                      status: "/aggregator/status"
+                    }
+                  },
+                  2: {
+                    id: 5,
+                    name: "Import output of the SYMPHONIE model",
+                    slug: "import-output-symphonie",
+                    abstract: "Import an output of Symphonie Model",
+                    actions: {
+                      describe: "/aggregator/importPhenomena/from-output-symphonie/describe",
+                      execute: "/aggregator/importPhenomena/from-output-symphonie/execute",
+                      status: "/aggregator/status"
+                    }
+                  }
+                }
+              },
+              code: 0,
+              message: ""
+            }
+
+
+## Statut  [/aggregator/status]
+
+### POST
++ Request (application/json)
+
+        {
+            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+            "target":"http:\/\/192.168.1.61:9082\/aggregator\/status",
+            "fieldsite_id":1,
+            "data":1
+        }
+
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+        ```
+        Execution exception:
+        [NumberFormatException: For input string: ""]
+        In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 428.
+        ```
+
+## Describe Import ASCII Phenomena format  [/aggregator/importPhenomena/from-ascii/describe]
+
+### GET
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+        ```
+        Execution exception:
+        [UnconvertibleObjectException: No converter found.]
+        In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 436.
+        ```
+
+## Import ASCII Phenomena  [/aggregator/importPhenomena/from-ascii/execute]
+
+### POST
++ Request (application/json)
+
+        {
+            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+            "target":"http:\/\/192.168.1.61:9082\/aggregator\/from-ascii\/execute",
+            "fieldsite_id":1,
+            "data":1
+        }
+
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+## Describe Import NetCDF Phenomena format  [/aggregator/importPhenomena/from-netcdf/describe]
+
+### GET
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+        ```
+        Execution exception:
+        [UnconvertibleObjectException: No converter found.]
+        In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 452.
+        ```
+
+## Import NetCDF Phenomena  [/aggregator/importPhenomena/from-netcdf/execute]
+
+### POST
++ Request (application/json)
+
+        {
+            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+            "target":"http:\/\/192.168.1.61:9082\/aggregator\/from-netcdf\/execute",
+            "fieldsite_id":1,
+            "data":1
+        }
+
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+## Describe Import Symphonie Phenomena format  [/aggregator/importPhenomena/from-output-symphonie/describe]
+
+### GET
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+        ```
+        Execution exception:
+        [UnconvertibleObjectException: No converter found.]
+        In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 468.
+        ```
+
+## Import Symphonie Phenomena  [/aggregator/importPhenomena/from-output-symphonie/execute]
+
+### POST
++ Request (application/json)
+
+        {
+            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+            "target":"http:\/\/192.168.1.61:9082\/aggregator\/from-output-symphonie\/describe",
+            "fieldsite_id":1,
+            "data":1
+        }
+
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+## Describe Import Symphonie Phenomena format  [/aggregator/importPhenomena/from-output-ww3/describe]
+
+### GET
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+            {
+                code: 2,
+                message: "",
+                data: null
+            }
+
+## Import Symphonie Phenomena  [/aggregator/importPhenomena/from-output-ww3/execute]
+
+### POST
++ Request (application/json)
+
+        {
+            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+            "target":"http:\/\/192.168.1.61:9082\/aggregator\/from-output-ww3\/describe",
+            "fieldsite_id":1,
+            "data":1
+        }
+
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+            {
+                code: 2,
+                message: "",
+                data: null
+            }
+
+## Describe Import Symphonie Phenomena format  [/aggregator/importPhenomena/from-ecmwf/describe]
+
+### GET
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+            {
+                code: 0,
+                message: "",
+                data: {
+                    name: "Aggregator : Import-phenomena-ecmwf",
+                    abstract: "Reads a netcdf file and converts it in MFieldSite format",
+                    inputs: {
+                        CoordinateReferenceSystem: {
+                            id: "CoordinateReferenceSystem",
+                            name: "CoordinateReferenceSystem",
+                            abstract: "CRS EPSG Code",
+                            type: "String"
+                        },
+                        EnvelopeMinX: {
+                            id: "EnvelopeMinX",
+                            name: "EnvelopeMinX",
+                            abstract: "X min position ordinate in the given CRS",
+                            type: "Double"
+                        },
+                        EnvelopeMaxX: {
+                            id: "EnvelopeMaxX",
+                            name: "EnvelopeMaxX",
+                            abstract: "X max position ordinate in the given CRS",
+                            type: "Double"
+                        },
+                        EnvelopeMinY: {
+                            id: "EnvelopeMinY",
+                            name: "EnvelopeMinY",
+                            abstract: "Y min position ordinate in the given CRS",
+                            type: "Double"
+                        },
+                        EnvelopeMaxY: {
+                            id: "EnvelopeMaxY",
+                            name: "EnvelopeMaxY",
+                            abstract: "Y max position ordinate in the given CRS",
+                            type: "Double"
+                        },
+                        Date: {
+                            id: "Date",
+                            name: "Date",
+                            abstract: "Date",
+                            type: "Date"
+                        },
+                        AggregationName: {
+                            type: "String",
+                            id: "AggregationName",
+                            name: "AggregationName",
+                            abstract: "Aggregation name | This field is left free to the user. It can be a reference to the data source (gebco, ecmwf,...)  or simply leave empty."
+                        },
+                        AggregationDescription: {
+                            type: "String",
+                            id: "AggregationDescription",
+                            name: "AggregationDescription",
+                            abstract: "This field is left free to the user. It can be a reference to the data source (gebco, ecmwf,...) or simply leave empty."
+                        }
+                    },
+                    outputs: { }
+                }
+            }
+
+## Import Symphonie Phenomena  [/aggregator/importPhenomena/from-ecmwf/execute]
+
+
+### POST
++ Request (application/json)
+
+        {
+            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+            "target":"http:\/\/192.168.1.61:9082\/aggregator\/from-ecmwf\/describe",
+            "fieldsite_id":1,
+            "data": {
+                inputs: {
+                    CoordinateReferenceSystem: "",
+                    EnvelopeMinX: "",
+                    EnvelopeMaxX: "",
+                    EnvelopeMinY: "",
+                    EnvelopeMaxY: "",
+                    Date: "",
+                    AggregationName: "",
+                    AggregationDescription: ""
+                }
+            }
+        }
+
++ Response 200
+    + Headers
+
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+
+            <EMPTY>

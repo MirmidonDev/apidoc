@@ -1,0 +1,134 @@
+# Group Fieldsites
+Gestion des fieldsites de **Mirmidon-unstable API**
+
+# Base [/]
+Point d'entrée de l'API.
+
+Cette ressource n'a aucun attribut.
++ Response 200
+    +Headers
+    
+            Accept:application/json,
+            Content-Type:application/json
+
+## Lister les fieldsites [/explorer/fieldsite/list]
+
+    Note: Should be an HTTP GET
+
+### POST
+
++ Response 200
+    + Headers
+    
+            Accept:application/json,
+            Content-Type:application/json
+
+    + Body
+    
+            {
+               "data":
+               {
+                   "0":
+                   {
+                       "id": 1,
+                       "name": "Taiwan",
+                       "creationDate": "2014-11-04 12:21:26.999"
+                   },
+                    "0":
+                   {
+                       "id": 2,
+                       "name": "Fieldsite2",
+                       "creationDate": "2014-11-04 12:24:22.548"
+                   },
+                   ... More ...
+               },
+               "code": 0,
+               "message": ""
+            }
+
+ 
+## Ajouter un fieldsite [/explorer/fieldsite/add]
+Pour créer un fieldsite, fournir simplement le champ `name` du nouveau fieldsite. 
+
+### POST
+
++ Request (application/json)
+
+        {
+            "name": "Taiwan"
+        }
+
+
++ Response 200
+    + Headers
+    
+            Content-Type:application/json
+
+    + Schema
+
+            {
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "code": {
+                        "type": "number",
+                        "required": true
+                    },
+                    "message": {
+                        "type": ["string", "null"],
+                        "required": true
+                    },
+                    "data": {
+                        "type": "object",
+                        "required": true
+                    }
+                }
+            }
+
+    + Body
+
+            {
+                "code": 0,
+                "message": null,
+                "data":
+                    {
+                        "id": 2,
+                        "name": "Taiwan",
+                        "creationDate": "2014-11-04 12:21:26.999"
+                    }
+            }
+            
+
+## Supprimer un fieldsite [/explorer/fieldsite/remove]
+
+
+    Donner l'ID du fieldsite à supprimer dans le champ 'data'
+
+### POST
++ Request (application/json)
+
+        {
+            "data": 3
+        }
+
++ Response 200
+
+    + Body
+    
+            {
+                "code":0,
+                "message":null,
+                "data":null
+            }
+
++ Response 500
+
+    **Attention, normalement le code HTTP devrait être différent de 200, la réponse en cas d'erreur est correcte mais pas le code qui reste à 200**
+
+    + Body
+    
+            {
+                "code": 2,
+                "message": "Impossible to find speficied fieldsite",
+                "data": null
+            }
