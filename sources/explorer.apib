@@ -566,7 +566,7 @@ Item not documented
 
 + Parameters
 
-    + id = `` (required, string, `1`) ... @todo: document.
+    + id = `` (required, integer, `1`) ... @todo: document.
 
 + Response 200
 
@@ -617,3 +617,74 @@ Item not documented - High load time.
                 "code":0,
                 "message":""
             }
+
+## List aggregations [/explorer/maggregation/list]
+Item not documented - Should be rewritten when the aggregator is working (output empty list)
+
+### GET
+
++ Response 200
+
+    + Headers
+
+            Content-Type:application/json
+
+    + Body
+
+            {  
+                "data":{  
+                    "aggreations":{  
+                        //Shouldn't be empty
+                    }
+                },
+                "code":0,
+                "message":""
+            }
+
+## List aggregations by phenomenon [/explorer/maggregation/by-phenomenon?idFieldSite={idFieldSite}&idPhenomenon={idPhenomenon}]
+Item not documented - Should be rewritten when the aggregator is working (output empty list)
+
+### GET
+
++ Parameters
+
+    + idFieldSite = `` (required, integer, `1`) ... Fieldsite ID.
+    + idPhenomenon = `` (required, integer, `1`) ... Phenomenon ID.
+
++ Response 200
+
+    + Headers
+
+            Content-Type:application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    //Shouldn't be empty
+                }
+            }
+
+## Media -?- [/explorer/media?token={token}]
+Item not documented and probably deprecated?
+
+### GET
+
++ Parameters
+
+    + token = `` (required, string, `unknown`) ... A media token (who gives it?).
+
++ Response 200
+
+    + Headers
+
+            Content-Type:application/json
+
+    + Body
+
+            Execution exception
+            [NullPointerException: null]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_explorer/ExplorerManager.java at line 19.
+
