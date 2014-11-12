@@ -1,0 +1,167 @@
+# Group Users
+Users de **Mirmidon-unstable API**
+
+## Users List [/users/list]
+
+### GET
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {
+                "code": 0,
+                "message": null,
+                "data": {
+                    "1": {
+                        "id": 1,
+                        "username": "demo",
+                        "email": "admin@mirmidon.org",
+                        "name": "administrator",
+                        "lastAccess": "null",
+                        "roles": {
+                            "Admin": {
+                                "name": "Admin",
+                                "description": "Administrator of Mirmidon API"
+                            },
+                            "Standard": {
+                                "name": "Standard",
+                                "description": "Standard user of Mirmidon API"
+                            },
+                            "Viewer": {
+                                "name": "Viewer",
+                                "description": "Viewer user of Mirmidon API"
+                            }
+                        }
+                    },
+                    "2": {
+                        "id": 2,
+                        "username": "view",
+                        "email": "viewer@mirmidon.org",
+                        "name": "viewer",
+                        "lastAccess": "null",
+                        "roles": {
+                            "Viewer": {
+                                "name": "Viewer",
+                                "description": "Viewer user of Mirmidon API"
+                            }
+                        }
+                    }
+                }
+            }
+
+### POST
+
+    ```
+    Duplicate of GET method?
+    ```
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {
+                "code": 0,
+                "message": null,
+                "data": {
+                    "1": {
+                        "id": 1,
+                        "username": "demo",
+                        "email": "admin@mirmidon.org",
+                        "name": "administrator",
+                        "lastAccess": "null",
+                        "roles": {
+                            "Admin": {
+                                "name": "Admin",
+                                "description": "Administrator of Mirmidon API"
+                            },
+                            "Standard": {
+                                "name": "Standard",
+                                "description": "Standard user of Mirmidon API"
+                            },
+                            "Viewer": {
+                                "name": "Viewer",
+                                "description": "Viewer user of Mirmidon API"
+                            }
+                        }
+                    },
+                    "2": {
+                        "id": 2,
+                        "username": "view",
+                        "email": "viewer@mirmidon.org",
+                        "name": "viewer",
+                        "lastAccess": "null",
+                        "roles": {
+                            "Viewer": {
+                                "name": "Viewer",
+                                "description": "Viewer user of Mirmidon API"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Users Count [/users/count]
+
+### GET
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+    
+    + Body
+
+            {
+                "code": 0,
+                "message": null,
+                "data": {
+                    "nbUsers": 2
+                }
+            }
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+    
+    + Body
+
+            {
+                "code": 0,
+                "message": null,
+                "data": {
+                    "nbUsers": 2
+                }
+            }
+

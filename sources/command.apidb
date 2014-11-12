@@ -1,0 +1,240 @@
+# Group Command Scheduler
+Command Scheduler de **Mirmidon-unstable API**
+
+## Command List [/command/list]
+
+### GET
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "commands":{  
+
+                    }
+                }
+            }
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "commands":{  
+
+                    }
+                }
+            }
+
+## Command info [/command/info]
+
+### POST
+
++ Request (application/json)
+
+            UNKNOWN
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":1539,
+                "message":"Missing parameter [commandId]",
+                "data":null
+            }
+
+
+## Command Start [/command/start]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {  
+                "code":1538,
+                "message":"Unfound command",
+                "data":null
+            }
+
+## Command Create [/command/create]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body 
+
+            {  
+                "code":1540,
+                "message":"There is no idCommand OR no corresponding configuration.",
+                "data":null
+            }
+
+## Command Stop [/command/stop]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":"0"
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body 
+
+            {  
+                "code":1537,
+                "message":"The command #0 hasn't been cancelled. Error: null",
+                "data":null
+            }
+
+## Command Latest [/command/latest]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":"0"
+            }
+
++ Response 200
+
+    + Headers
+
+             Content-Type: application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "command":"No command finished"
+                }
+            }
+
+## Command IsValid [/command/isvalid]
+
+### POST
+
++ Request (application/json)
+
+           {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+          }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            ```
+            Execution exception
+            [NullPointerException: null]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_command_scheduler/CommandManager.java at line 138.
+            ```
+
+## Command Delete  [/command/delete]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            ```
+            Execution exception
+            [NullPointerException: null]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_command_scheduler/CommandManager.java at line 157.
+            ```

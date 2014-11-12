@@ -1,0 +1,811 @@
+# Group Configuration Builder
+Configuration Builder de **Mirmidon-unstable API**
+
+## Models list [/configuration/model/list?ifFieldSite={idFieldSite}]
+
+### GET
+
++ Parameters
+
+    + idFieldSite = `` (required, string, `1`) ... Identifiant du FieldSite.
+
++ Response 200
+    + Headers
+
+            Content-Type:text/html; charset=utf-8
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "models":{  
+                        "0":{  
+                            "id":7,
+                            "name":"Symphonie S25.10 homogeneous wind",
+                            "slug":"symphonie_homogeneous_wind",
+                            "isAvailable":false,
+                            "abstract":"Build a configuration of Symphonie",
+                            "actions":{  
+                                "describe":"/configuration/symphonie/symphonie-homogeneous-wind/describe",
+                                "execute":"/configuration/symphonie/symphonie-homogeneous-wind/execute",
+                                "status":"/configuration/status"
+                            }
+                        },
+                        "1":{  
+                            "id":8,
+                            "name":"Symphonie S26 tide",
+                            "slug":"symphonie-s26-tide",
+                            "isAvailable":false,
+                            "abstract":"Build a configuration of Symphonie",
+                            "actions":{  
+                                "describe":"/configuration/symphonie/symphonie-s26-tide/describe",
+                                "execute":"/configuration/symphonie/symphonie-s26-tide/execute",
+                                "status":"/configuration/status"
+                            }
+                        },
+                        "2":{  
+                            "id":9,
+                            "name":"Standard simple Mmodel of Telemac",
+                            "slug":"mmodelStandard",
+                            "isAvailable":true,
+                            "abstract":"Build a configuration of Standard Telemac",
+                            "actions":{  
+                                "describe":"/configuration/telemac/mmodelStandard/describe",
+                                "execute":"/configuration/telemac/mmodelStandard/execute",
+                                "status":"/configuration/status"
+                            }
+                        },
+                        "3":{  
+                            "id":10,
+                            "name":"Wave Watch III Homogeneous Wind",
+                            "slug":"ww3_homogeneous_wind",
+                            "isAvailable":true,
+                            "abstract":"Build a configuration of WW3 with homogeneous wind",
+                            "actions":{  
+                                "describe":"/configuration/ww3/ww3-homogeneous-wind/describe",
+                                "execute":"/configuration/ww3/ww3-homogeneous-wind/execute",
+                                "status":"/configuration/status"
+                            }
+                        },
+                        "4":{  
+                            "id":11,
+                            "name":"Simple testor 1",
+                            "slug":"testor",
+                            "isAvailable":true,
+                            "abstract":"Build a simple testor configuration for testing preview and aggregationc",
+                            "actions":{  
+                                "describe":"/configuration/testor/testor-1/describe",
+                                "execute":"/configuration/testor/testor-1/execute",
+                                "status":"/configuration/status"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Configuration List [/configuration/list]
+
+### GET
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {
+                "code": 0,
+                "message": null,
+                "data": {
+                    "configurations": {}
+                }
+            }
+
+## Configuration info [/configuration/info?idConfig={idConfig}]
+
+### GET 
+
++ Parameters
+
+    + idConfig = `` (required, string, `unknown`) ... Identifiant de la configuration (more details please?).
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":2,
+                "message":"No configuration with id 1",
+                "data":null
+            }
+
+## Configuration Status [/configuration/status]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":{  
+                    "processId":1
+                }
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {  
+                "data":{  
+                    "currentStatus":"failed",
+                    "currentMessage":"Error during the adding of the aggregation",
+                    "currentPourcent":"100"
+                },
+                "code":0,
+                "message":""
+            }
+
+## Configuration Latest [/configuration/latest]
+
+### POST 
+
++ Request (application/json)
+
+            {
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+    
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "configurations":"No configurations"
+                }
+            }
+
+## Configuration Symfonie Homogenous Wind Describe [/configuration/symphonie/symphonie-homogeneous-wind/describe]
+
+### GET
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body 
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "name":"Symphonie-builder : Symphonie_homogeneous_wind",
+                    "abstract":"Builder Symphonie 1 configuration",
+                    "inputs":{  
+                        "BathymetryFile":{  
+                            "type":"Aggregation",
+                            "id":"BathymetryFile",
+                            "name":"bathymetry",
+                            "abstract":""
+                        },
+                        "TotalTasks":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasks",
+                            "name":"TotalTasks",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "TotalTasksPerNode":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasksPerNode",
+                            "name":"TotalTasksPerNode",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "TimeDuration":{  
+                            "id":"TimeDuration",
+                            "name":"TimeDuration",
+                            "abstract":"Physical time duration in hours",
+                            "type":"Integer"
+                        },
+                        "WindDirection":{  
+                            "id":"WindDirection",
+                            "name":"WindDirection",
+                            "abstract":"Wind direction in degrees. (0) North => South , (180) South => North ",
+                            "type":"Double"
+                        },
+                        "WindVelocity":{  
+                            "id":"WindVelocity",
+                            "name":"WindVelocity",
+                            "abstract":"Wind velocity in meter per second",
+                            "type":"Double"
+                        },
+                        "Width":{  
+                            "type":"NumberSlider",
+                            "id":"Width",
+                            "name":"Width",
+                            "abstract":"",
+                            "minimumValue":200,
+                            "maximalValue":800,
+                            "incrementValue":2
+                        },
+                        "Height":{  
+                            "type":"NumberSlider",
+                            "id":"Height",
+                            "name":"Height",
+                            "abstract":"",
+                            "minimumValue":200,
+                            "maximalValue":800,
+                            "incrementValue":2
+                        },
+                        "ConfigurationName":{  
+                            "type":"String",
+                            "id":"ConfigurationName",
+                            "name":"ConfigurationName",
+                            "abstract":"The name of the configuration"
+                        },
+                        "ConfigurationDescription":{  
+                            "type":"String",
+                            "id":"ConfigurationDescription",
+                            "name":"ConfigurationDescription",
+                            "abstract":"The description of the configuration (area, forcings,...)."
+                        }
+                    },
+                    "outputs":{  
+
+                    }
+                }
+            }
+
+## Configuration Symfonie Homogenous Wind Execute [/configuration/symphonie/symphonie-homogeneous-wind/execute]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":{  
+                    "data":""
+                }
+            }
+
++ Response 200
+
+    + Header
+
+            Content-Type: application/json
+
+    + Body 
+
+            {  
+                "code":2,
+                "message":"Unable to decode the configuration name.",
+                "data":null
+            }
+
+## Configuration Symfonie S26-tide Describe [/configuration/symphonie/symphonie-s26-tide/describe]
+
+### GET
+
++ Response 200
+
+    + Headers 
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "name":"Symphonie-builder : Symphonie-s26-tide",
+                    "abstract":"Build a SYMPHONIE forced by tides and produce the 3D-currents",
+                    "inputs":{  
+                        "TotalTasks":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasks",
+                            "name":"TotalTasks",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "TotalTasksPerNode":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasksPerNode",
+                            "name":"TotalTasksPerNode",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "BathycoteFile":{  
+                            "id":"BathycoteFile",
+                            "name":"BathycoteFile",
+                            "abstract":"Bathycote_in.dat file",
+                            "type":"File"
+                        },
+                        "NotebookGridFile":{  
+                            "id":"NotebookGridFile",
+                            "name":"NotebookGridFile",
+                            "abstract":"Notebook_grid file",
+                            "type":"File"
+                        },
+                        "TideForcingPath":{  
+                            "type":"Aggregation",
+                            "id":"TideForcingPath",
+                            "name":"tide",
+                            "abstract":""
+                        },
+                        "StartTime":{  
+                            "id":"StartTime",
+                            "name":"StartTime",
+                            "abstract":"The physical start time of the simulation",
+                            "type":"Date"
+                        },
+                        "EndTime":{  
+                            "id":"EndTime",
+                            "name":"EndTime",
+                            "abstract":"The physical end time of the simulation",
+                            "type":"Date"
+                        },
+                        "GraphOutputPeriodicity":{  
+                            "id":"GraphOutputPeriodicity",
+                            "name":"GraphOutputPeriodicity",
+                            "abstract":"The periodicity of output graphique generation given in days",
+                            "type":"Double"
+                        },
+                        "ConfigurationName":{  
+                            "type":"String",
+                            "id":"ConfigurationName",
+                            "name":"ConfigurationName",
+                            "abstract":"The name of the configuration"
+                        },
+                        "ConfigurationDescription":{  
+                            "type":"String",
+                            "id":"ConfigurationDescription",
+                            "name":"ConfigurationDescription",
+                            "abstract":"The description of the configuration (area, forcings,...)."
+                        }
+                    },
+                    "outputs":{  
+
+                    }
+                }
+            }
+
+## Configuration Symfonie S26-tide Execute [/configuration/symphonie/symphonie-s26-tide/execute]
+
+### POST 
+
++ Request
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":{  
+                    "data":""
+                }
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {  
+                "code":2,
+                "message":"Unable to decode the configuration name.",
+                "data":null
+            }
+
+## Configuration telemac MmodelStandard Describe [/configuration/telemac/mmodelStandard/describe]
+
+### GET 
+
++ Response 200
+    
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "name":"Telemac-builder : MmodelStandard",
+                    "abstract":"Builder Telemac standard configuration",
+                    "inputs":{  
+                        "TotalTasks":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasks",
+                            "name":"TotalTasks",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "TotalTasksPerNode":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasksPerNode",
+                            "name":"TotalTasksPerNode",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "CasFile":{  
+                            "id":"CasFile",
+                            "name":"CasFile",
+                            "abstract":"Configuration file (CAS)",
+                            "type":"File"
+                        },
+                        "GeoFile":{  
+                            "id":"GeoFile",
+                            "name":"GeoFile",
+                            "abstract":"Mesh file (GEO)",
+                            "type":"File"
+                        },
+                        "CliFile":{  
+                            "id":"CliFile",
+                            "name":"CliFile",
+                            "abstract":"Boundaries (CLI)",
+                            "type":"File"
+                        },
+                        "LiqFile":{  
+                            "id":"LiqFile",
+                            "name":"LiqFile",
+                            "abstract":"Configuration file (LIQ)",
+                            "type":"File"
+                        },
+                        "FortranFile":{  
+                            "id":"FortranFile",
+                            "name":"FortranFile",
+                            "abstract":"Fortran file",
+                            "type":"File"
+                        },
+                        "CoordinateReferenceSystem":{  
+                            "id":"CoordinateReferenceSystem",
+                            "name":"CoordinateReferenceSystem",
+                            "abstract":"CRS EPSG Code",
+                            "type":"String"
+                        },
+                        "XOffset":{  
+                            "id":"XOffset",
+                            "name":"XOffset",
+                            "abstract":"X offset in the given CRS ",
+                            "type":"Double"
+                        },
+                        "YOffset":{  
+                            "id":"YOffset",
+                            "name":"YOffset",
+                            "abstract":"Y offset in the given CRS",
+                            "type":"Double"
+                        },
+                        "File1":{  
+                            "id":"File1",
+                            "name":"File1",
+                            "abstract":"Additional File N°1 (file1)",
+                            "type":"File"
+                        },
+                        "File2":{  
+                            "id":"File2",
+                            "name":"File2",
+                            "abstract":"Additional File N°2 (file2)",
+                            "type":"File"
+                        },
+                        "File3":{  
+                            "id":"File3",
+                            "name":"File3",
+                            "abstract":"Additional File N°3 (file3)",
+                            "type":"File"
+                        },
+                        "File4":{  
+                            "id":"File4",
+                            "name":"File4",
+                            "abstract":"Additional File N°4 (file4)",
+                            "type":"File"
+                        },
+                        "File5":{  
+                            "id":"File5",
+                            "name":"File5",
+                            "abstract":"Additional File N°5 (file5)",
+                            "type":"File"
+                        },
+                        "ConfigurationName":{  
+                            "type":"String",
+                            "id":"ConfigurationName",
+                            "name":"ConfigurationName",
+                            "abstract":"The name of the configuration"
+                        },
+                        "ConfigurationDescription":{  
+                            "type":"String",
+                            "id":"ConfigurationDescription",
+                            "name":"ConfigurationDescription",
+                            "abstract":"The description of the configuration (area, forcings,...)."
+                        }
+                    },
+                    "outputs":{  
+
+                    }
+                }
+            }
+
+## Configuration telemac MmodelStandard Execute [/configuration/telemac/mmodelStandard/execute]
+
+### POST
+
++ Request (application/json)
+
+            {
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":{
+                        "data": "" 
+                    }
+            }
+
++ Response 200
+
+     + Headers
+
+            Content-Type : application/json
+
+     + Body
+
+            {  
+                "code":2,
+                "message":"Unable to decode the configuration name.",
+                "data":null
+            }
+
+## Configuration WW3 Homogeneous Wind Describe [/configuration/ww3/ww3-homogeneous-wind/describe]
+
+### GET
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "name":"Ww3-builder : Ww3_homogeneous_wind",
+                    "abstract":"Builder WW3 1 configuration",
+                    "inputs":{  
+                        "TotalTasksPerNode":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasksPerNode",
+                            "name":"TotalTasksPerNode",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "TotalTasks":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasks",
+                            "name":"TotalTasks",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "StartTime":{  
+                            "id":"StartTime",
+                            "name":"StartTime",
+                            "abstract":"Physical start time",
+                            "type":"Date"
+                        },
+                        "EndTime":{  
+                            "id":"EndTime",
+                            "name":"EndTime",
+                            "abstract":"Physical end time",
+                            "type":"Date"
+                        },
+                        "WindDirection":{  
+                            "id":"WindDirection",
+                            "name":"WindDirection",
+                            "abstract":"Wind direction in degrees. (0) North => South , (180) South => North ",
+                            "type":"Double"
+                        },
+                        "WindVelocity":{  
+                            "id":"WindVelocity",
+                            "name":"WindVelocity",
+                            "abstract":"Wind velocity in meter per second",
+                            "type":"Double"
+                        },
+                        "BathymetryFile":{  
+                            "id":"BathymetryFile",
+                            "name":"BathymetryFile",
+                            "abstract":"Bathymetry file from MFieldSite (not yet converted)",
+                            "type":"File"
+                        },
+                        "Width":{  
+                            "id":"Width",
+                            "name":"Width",
+                            "abstract":"Desired grid size for computation on the X axis (latitude)",
+                            "type":"Integer"
+                        },
+                        "Height":{  
+                            "id":"Height",
+                            "name":"Height",
+                            "abstract":"Desired grid size for computation on the Y axis (longitude)",
+                            "type":"Integer"
+                        },
+                        "ConfigurationName":{  
+                            "type":"String",
+                            "id":"ConfigurationName",
+                            "name":"ConfigurationName",
+                            "abstract":"The name of the configuration"
+                        },
+                        "ConfigurationDescription":{  
+                            "type":"String",
+                            "id":"ConfigurationDescription",
+                            "name":"ConfigurationDescription",
+                            "abstract":"The description of the configuration (area, forcings,...)."
+                        }
+                    },
+                    "outputs":{  
+
+                    }
+                }
+            }
+
+## Configuration WW3 Homogeneous Wind Execute [/configuration/ww3/ww3-homogeneous-wind/execute]
+
+### POST
+
++ Request (application/json)
+
+            {
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":{
+                        "data": ""
+                        }
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":2,
+                "message":"Unable to decode the configuration name.",
+                "data":null
+            }
+
+## Configuration testor 1 Describe [/configuration/testor/testor-1/describe]
+
++ Response 200
+    
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "name":"Testor-builder : Testor",
+                    "abstract":"Builder WW3 1 configuration",
+                    "inputs":{  
+                        "TotalTasksPerNode":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasksPerNode",
+                            "name":"TotalTasksPerNode",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "TotalTasks":{  
+                            "type":"NumberSlider",
+                            "id":"TotalTasks",
+                            "name":"TotalTasks",
+                            "abstract":"",
+                            "minimumValue":1,
+                            "maximalValue":64,
+                            "incrementValue":2
+                        },
+                        "ConfigurationName":{  
+                            "type":"String",
+                            "id":"ConfigurationName",
+                            "name":"ConfigurationName",
+                            "abstract":"The name of the configuration"
+                        },
+                        "ConfigurationDescription":{  
+                            "type":"String",
+                            "id":"ConfigurationDescription",
+                            "name":"ConfigurationDescription",
+                            "abstract":"The description of the configuration (area, forcings,...)."
+                        }
+                    },
+                    "outputs":{  
+
+                    }
+                }
+            }
+
+## Configuration Testor 1 Execute [/configuration/testor/testor-1/execute]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":{  
+                    "data":""
+                }
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":2,
+                "message":"Unable to decode the configuration name.",
+                "data":null
+            }

@@ -94,11 +94,254 @@ Aggregator de **Mirmidon-unstable API**
 
     + Body
 
-        ```
-        Execution exception:
-        [UnconvertibleObjectException: No converter found.]
-        In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 436.
-        ```
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "name":"Aggregator : Import-phenomena-ascii",
+                    "abstract":"Reads a time series ASCII file and converts it in MFieldSite format",
+                    "inputs":{  
+                        "Source":{  
+                            "id":"Source",
+                            "name":"Source",
+                            "abstract":"ASCII file",
+                            "type":"File"
+                        },
+                        "CoordinateReferenceSystem":{  
+                            "id":"CoordinateReferenceSystem",
+                            "name":"CoordinateReferenceSystem",
+                            "abstract":"CRS EPSG Code",
+                            "type":"String"
+                        },
+                        "PositionOrdinateX":{  
+                            "id":"PositionOrdinateX",
+                            "name":"PositionOrdinateX",
+                            "abstract":"X position ordinate in the given CRS ",
+                            "type":"Double"
+                        },
+                        "PositionOrdinateY":{  
+                            "id":"PositionOrdinateY",
+                            "name":"PositionOrdinateY",
+                            "abstract":"Y position ordinate in the given CRS",
+                            "type":"Double"
+                        },
+                        "Phenomenon":{  
+                            "id":"Phenomenon",
+                            "name":"Phenomenon",
+                            "abstract":"Phenomenon to Json format",
+                            "type":"String"
+                        },
+                        "StartFromLine":{  
+                            "id":"StartFromLine",
+                            "name":"StartFromLine",
+                            "abstract":"Number of lines to be skip before read data",
+                            "type":"Integer"
+                        },
+                        "Separator":{  
+                            "id":"Separator",
+                            "name":"Separator",
+                            "abstract":"Separator between two columns",
+                            "type":"String"
+                        },
+                        "DateFormat":{  
+                            "id":"DateFormat",
+                            "name":"DateFormat",
+                            "abstract":"String date format",
+                            "type":"String"
+                        },
+                        "DateColumn":{  
+                            "id":"DateColumn",
+                            "name":"DateColumn",
+                            "abstract":"Column number of date",
+                            "type":"Integer"
+                        },
+                        "ZLevel":{  
+                            "id":"ZLevel",
+                            "name":"ZLevel",
+                            "abstract":"Z level of the measure station",
+                            "type":"Double"
+                        },
+                        "FillValue":{  
+                            "id":"FillValue",
+                            "name":"FillValue",
+                            "abstract":"Value to set when data cant be decoded",
+                            "type":"String"
+                        },
+                        "ConvertToMirmidon":{  
+                            "id":"ConvertToMirmidon",
+                            "name":"ConvertToMirmidon",
+                            "abstract":"Converte data to Mirmidon standard",
+                            "type":"Boolean"
+                        },
+                        "AggregationName":{  
+                            "type":"String",
+                            "id":"AggregationName",
+                            "name":"AggregationName",
+                            "abstract":"Aggregation name | This field is left free to the user. It can be a reference to the data source (gebco, ecmwf,...) or simply leave empty."
+                        },
+                        "AggregationDescription":{  
+                            "type":"String",
+                            "id":"AggregationDescription",
+                            "name":"AggregationDescription",
+                            "abstract":"This field is left free to the user. It can be a reference to the data source (gebco, ecmwf,...) or simply leave empty."
+                        },
+                        "urn:ogc:cstl:wps:aggregator:import-phenomena-ascii:input:Phenomenon":{  
+                            "phenomenon":{  
+                                "0":{  
+                                    "standard_name":"pressure",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"pressure",
+                                            "unit":"",
+                                            "type":"ASCIIPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"Pa",
+                                                "1":"hPa",
+                                                "2":"kPa"
+                                            },
+                                            "column":-1
+                                        }
+                                    }
+                                },
+                                "1":{  
+                                    "standard_name":"wind",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"u",
+                                            "unit":"",
+                                            "type":"ASCIIPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s",
+                                                "1":"deg",
+                                                "2":"km/h",
+                                                "3":"rad"
+                                            },
+                                            "column":-1
+                                        },
+                                        "1":{  
+                                            "standard_name":"v",
+                                            "unit":"",
+                                            "type":"ASCIIPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s",
+                                                "1":"deg",
+                                                "2":"km/h",
+                                                "3":"rad"
+                                            },
+                                            "column":-1
+                                        }
+                                    }
+                                },
+                                "2":{  
+                                    "standard_name":"current",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"u",
+                                            "unit":"",
+                                            "type":"ASCIIPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s"
+                                            },
+                                            "column":-1
+                                        },
+                                        "1":{  
+                                            "standard_name":"v",
+                                            "unit":"",
+                                            "type":"ASCIIPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s"
+                                            },
+                                            "column":-1
+                                        }
+                                    }
+                                },
+                                "3":{  
+                                    "standard_name":"bathymetry",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"z",
+                                            "unit":"",
+                                            "type":"ASCIIPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m"
+                                            },
+                                            "column":-1
+                                        }
+                                    }
+                                },
+                                "4":{  
+                                    "standard_name":"tide",
+                                    "variables":{  
+
+                                    }
+                                },
+                                "5":{  
+                                    "standard_name":"hs",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"hs",
+                                            "unit":"",
+                                            "type":"ASCIIPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m"
+                                            },
+                                            "column":-1
+                                        }
+                                    }
+                                }
+                            },
+                            "type":"Phenomenon",
+                            "id":"Phenomenon",
+                            "abstract":"Phenomenon"
+                        }
+                    },
+                    "outputs":{  
+
+                    }
+                }
+            }
 
 ## Import ASCII Phenomena  [/aggregator/importPhenomena/from-ascii/execute]
 
@@ -118,6 +361,15 @@ Aggregator de **Mirmidon-unstable API**
             Accept:application/json,
             Content-Type:application/json
 
+    + Body
+
+            ```
+            Execution exception
+            [ClassCastException: com.fasterxml.jackson.databind.node.IntNode cannot be cast to com.fasterxml.jackson.databind.node.ObjectNode]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_aggregator/AggregatorManager.java at line 123. 
+            ```
+
+
 ## Describe Import NetCDF Phenomena format  [/aggregator/importPhenomena/from-netcdf/describe]
 
 ### GET
@@ -129,11 +381,206 @@ Aggregator de **Mirmidon-unstable API**
 
     + Body
 
-        ```
-        Execution exception:
-        [UnconvertibleObjectException: No converter found.]
-        In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 452.
-        ```
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "name":"Aggregator : Import-phenomena-netcdf",
+                    "abstract":"Reads a netcdf file and converts it in MFieldSite format",
+                    "inputs":{  
+                        "Source":{  
+                            "id":"Source",
+                            "name":"Source",
+                            "abstract":"NetCDF file",
+                            "type":"File"
+                        },
+                        "HorizontalCoordinateReferenceSystem":{  
+                            "id":"HorizontalCoordinateReferenceSystem",
+                            "name":"HorizontalCoordinateReferenceSystem",
+                            "abstract":"CRS EPSG Code of the horizontal system. If you leave empty, the CRS WGS84 will be automatically chose.",
+                            "type":"String"
+                        },
+                        "Phenomenon":{  
+                            "phenomenon":{  
+                                "0":{  
+                                    "standard_name":"pressure",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"pressure",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"Pa",
+                                                "1":"hPa",
+                                                "2":"kPa"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                },
+                                "1":{  
+                                    "standard_name":"wind",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"u",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s",
+                                                "1":"deg",
+                                                "2":"km/h",
+                                                "3":"rad"
+                                            },
+                                            "netcdf_variable_name":""
+                                        },
+                                        "1":{  
+                                            "standard_name":"v",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s",
+                                                "1":"deg",
+                                                "2":"km/h",
+                                                "3":"rad"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                },
+                                "2":{  
+                                    "standard_name":"current",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"u",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s"
+                                            },
+                                            "netcdf_variable_name":""
+                                        },
+                                        "1":{  
+                                            "standard_name":"v",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                },
+                                "3":{  
+                                    "standard_name":"bathymetry",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"z",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                },
+                                "4":{  
+                                    "standard_name":"tide",
+                                    "variables":{  
+
+                                    }
+                                },
+                                "5":{  
+                                    "standard_name":"hs",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"hs",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                }
+                            },
+                            "type":"Phenomenon",
+                            "id":"Phenomenon",
+                            "abstract":"Phenomenon"
+                        },
+                        "Dimension":{  
+                            "id":"Dimension",
+                            "name":"Dimension",
+                            "abstract":"Set the dimension of the variables that you want to read.",
+                            "type":"Integer"
+                        },
+                        "ConvertToMirmidon":{  
+                            "id":"ConvertToMirmidon",
+                            "name":"ConvertToMirmidon",
+                            "abstract":"Converte data to Mirmidon standard.",
+                            "type":"Boolean"
+                        },
+                        "AggregationName":{  
+                            "type":"String",
+                            "id":"AggregationName",
+                            "name":"AggregationName",
+                            "abstract":"Aggregation name | This field is left free to the user. It can be a reference to the data source (gebco, ecmwf,...) or simply leave empty."
+                        },
+                        "AggregationDescription":{  
+                            "type":"String",
+                            "id":"AggregationDescription",
+                            "name":"AggregationDescription",
+                            "abstract":"This field is left free to the user. It can be a reference to the data source (gebco, ecmwf,...) or simply leave empty."
+                        }
+                    },
+                    "outputs":{  
+
+                    }
+                }
+            }
 
 ## Import NetCDF Phenomena  [/aggregator/importPhenomena/from-netcdf/execute]
 
@@ -153,6 +600,14 @@ Aggregator de **Mirmidon-unstable API**
             Accept:application/json,
             Content-Type:application/json
 
+    + Body
+
+            ```
+            Execution exception
+            [ClassCastException: com.fasterxml.jackson.databind.node.TextNode cannot be cast to com.fasterxml.jackson.databind.node.ObjectNode]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_aggregator/AggregatorManager.java at line 205.
+            ```
+
 ## Describe Import Symphonie Phenomena format  [/aggregator/importPhenomena/from-output-symphonie/describe]
 
 ### GET
@@ -164,11 +619,218 @@ Aggregator de **Mirmidon-unstable API**
 
     + Body
 
-        ```
-        Execution exception:
-        [UnconvertibleObjectException: No converter found.]
-        In /data/MIRMIDON/unstable/mirmidon/LOGIC/target/scala-2.10/src_managed/main/routes_routing.scala at line 468.
-        ```
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "name":"Aggregator : Import-output-symphonie",
+                    "abstract":"Reads a Symphonie output file and converts it in MFieldSite format",
+                    "inputs":{  
+                        "Source":{  
+                            "id":"Source",
+                            "name":"Source",
+                            "abstract":"NetCDF file",
+                            "type":"File"
+                        },
+                        "Phenomenon":{  
+                            "phenomenon":{  
+                                "0":{  
+                                    "standard_name":"pressure",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"pressure",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"Pa",
+                                                "1":"hPa",
+                                                "2":"kPa"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                },
+                                "1":{  
+                                    "standard_name":"wind",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"u",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s",
+                                                "1":"deg",
+                                                "2":"km/h",
+                                                "3":"rad"
+                                            },
+                                            "netcdf_variable_name":""
+                                        },
+                                        "1":{  
+                                            "standard_name":"v",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s",
+                                                "1":"deg",
+                                                "2":"km/h",
+                                                "3":"rad"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                },
+                                "2":{  
+                                    "standard_name":"current",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"u",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s"
+                                            },
+                                            "netcdf_variable_name":""
+                                        },
+                                        "1":{  
+                                            "standard_name":"v",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m/s"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                },
+                                "3":{  
+                                    "standard_name":"bathymetry",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"z",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                },
+                                "4":{  
+                                    "standard_name":"tide",
+                                    "variables":{  
+
+                                    }
+                                },
+                                "5":{  
+                                    "standard_name":"hs",
+                                    "variables":{  
+                                        "0":{  
+                                            "standard_name":"hs",
+                                            "unit":"",
+                                            "type":"NetcdfPhenomenaVariable",
+                                            "data_type":"double",
+                                            "minimum_value":0,
+                                            "maximun_value":1,
+                                            "fill_value":"NaN",
+                                            "scale":1,
+                                            "offset":0,
+                                            "units":{  
+                                                "0":"m"
+                                            },
+                                            "netcdf_variable_name":""
+                                        }
+                                    }
+                                }
+                            },
+                            "type":"Phenomenon",
+                            "id":"Phenomenon",
+                            "abstract":"Phenomenon"
+                        },
+                        "EnvelopeMinX":{  
+                            "id":"EnvelopeMinX",
+                            "name":"EnvelopeMinX",
+                            "abstract":"X min (longitude)",
+                            "type":"Double"
+                        },
+                        "EnvelopeMaxX":{  
+                            "id":"EnvelopeMaxX",
+                            "name":"EnvelopeMaxX",
+                            "abstract":"X max (longitude)",
+                            "type":"Double"
+                        },
+                        "EnvelopeMinY":{  
+                            "id":"EnvelopeMinY",
+                            "name":"EnvelopeMinY",
+                            "abstract":"Y min (latitude)",
+                            "type":"Double"
+                        },
+                        "EnvelopeMaxY":{  
+                            "id":"EnvelopeMaxY",
+                            "name":"EnvelopeMaxY",
+                            "abstract":"Y max (latitude)",
+                            "type":"Double"
+                        },
+                        "ConvertToMirmidon":{  
+                            "id":"ConvertToMirmidon",
+                            "name":"ConvertToMirmidon",
+                            "abstract":"Converte data to Mirmidon standard",
+                            "type":"Boolean"
+                        },
+                        "AggregationName":{  
+                            "type":"String",
+                            "id":"AggregationName",
+                            "name":"AggregationName",
+                            "abstract":"Aggregation name | This field is left free to the user. It can be a reference to the data source (gebco, ecmwf,...) or simply leave empty."
+                        },
+                        "AggregationDescription":{  
+                            "type":"String",
+                            "id":"AggregationDescription",
+                            "name":"AggregationDescription",
+                            "abstract":"This field is left free to the user. It can be a reference to the data source (gebco, ecmwf,...) or simply leave empty."
+                        }
+                    },
+                    "outputs":{  
+
+                    }
+                }
+            }
 
 ## Import Symphonie Phenomena  [/aggregator/importPhenomena/from-output-symphonie/execute]
 
@@ -187,6 +849,14 @@ Aggregator de **Mirmidon-unstable API**
 
             Accept:application/json,
             Content-Type:application/json
+
+    + Body
+
+            ```
+            Execution exception
+            [ClassCastException: com.fasterxml.jackson.databind.node.TextNode cannot be cast to com.fasterxml.jackson.databind.node.ObjectNode]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_aggregator/AggregatorManager.java at line 284.
+            ```
 
 ## Describe Import Symphonie Phenomena format  [/aggregator/importPhenomena/from-output-ww3/describe]
 
@@ -304,27 +974,26 @@ Aggregator de **Mirmidon-unstable API**
 
 ## Import Symphonie Phenomena  [/aggregator/importPhenomena/from-ecmwf/execute]
 
-
 ### POST
 + Request (application/json)
 
-        {
-            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
-            "target":"http:\/\/192.168.1.61:9082\/aggregator\/from-ecmwf\/describe",
-            "fieldsite_id":1,
-            "data": {
-                inputs: {
-                    CoordinateReferenceSystem: "",
-                    EnvelopeMinX: "",
-                    EnvelopeMaxX: "",
-                    EnvelopeMinY: "",
-                    EnvelopeMaxY: "",
-                    Date: "",
-                    AggregationName: "",
-                    AggregationDescription: ""
+            {
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/aggregator\/from-ecmwf\/describe",
+                "fieldsite_id":1,
+                "data": {
+                    "inputs": {
+                        "CoordinateReferenceSystem": "",
+                        "EnvelopeMinX": "",
+                        "EnvelopeMaxX": "",
+                        "EnvelopeMinY": "",
+                        "EnvelopeMaxY": "",
+                        "Date": "",
+                        "AggregationName": "",
+                        "AggregationDescription": ""
+                    }
                 }
             }
-        }
 
 + Response 200
     + Headers
@@ -334,4 +1003,35 @@ Aggregator de **Mirmidon-unstable API**
 
     + Body
 
-            <EMPTY>
+            {  
+                "code":2,
+                "message":"Required not found : CoordinateReferenceSystem",
+                "data":null
+            }
+
+## Import Configuration [/aggregator/importConfiguration?fieldsiteId={fieldsiteId}&configId={configId}]
+
+### GET
+
++ Parameters
+
+    + fieldsiteId  = `` (required, integer, `1`) ... Fieldsite ID of current Fieldsite.
+    + configId      = `` (required, integer, `unknown`) ... Unknown parameter?
+
++ Response 200
+
+    + Headers
+
+            Content-Type:application/json
+
+    + Body
+
+            ???
+
++ Response 500
+
+    + Body
+
+            Execution exception
+            [NullPointerException: null]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_aggregator/AggregatorManager.java at line 520.

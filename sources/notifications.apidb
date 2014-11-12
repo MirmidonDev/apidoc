@@ -1,0 +1,325 @@
+# Group Notifications
+Notifications de **Mirmidon-unstable API**
+
+## Notification Add [/notification/add]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":{  
+                    "type":"SYS",   //Can be : [IN/W/IM/E/S/G/SYS]
+                    "title":"bla",  //Title of the notification
+                    "text":"blabla",//Text of the notification
+                    "sticky":1 //Sticky bit : If set to 1 the notification has to be cleared by the user and does not disappear automatically.
+                }
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            ```
+            Execution exception
+            [IllegalArgumentException: No enum constant models.m_core_notifications_center.MNotificationType.SYS]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/models/m_core_notifications_center/MNotificationType.java at line 9.
+            ```
+
+## Notification Delete All [/notification/deleteall]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":null
+            }
+
+## Notification Delete One [/notification/deleteone]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":"1"
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":2051,
+                "message":"Cannot delete - No notification corresponding to given ID.",
+                "data":null
+            }
+
+## Notification Clear All [/notification/clearall]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":null
+            }
+
+## Notification Clear One [/notification/clearone]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":"1"
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":2051,
+                "message":"No notification corresponding to given ID.",
+                "data":null
+            }
+
+## Notification Unstick All [/notification/unstickall]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":"1"
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":null
+            }
+
+## Notification Unstick One [/notification/unstickone]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":"1"
+            }
+
++ Response 200
+
+    + Headers 
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":2051,
+                "message":"No notification corresponding to given ID.",
+                "data":null
+            }
+
+## Notification List [/notification/list]
+
+### GET
+
++ Request (application/json)
+
+        {  
+            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+            "target":"http:\/\/192.168.1.61:9082\/",
+            "fieldsite_id":1,
+            "data":""
+        }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "notifications":{  
+                        {  
+                            id:'notif',     // (string) Name
+                            shooter:'AG',   // (string) Sender: [AG=aggregator/GUI=gui/EX=explorer/COM=commandscheduler/CON=configurationbuilder/COND=conductor/LOG=logic]
+                            type:'W',       // (string) Level: [W=warning/E=error/IN=info/IM=important/S=success/G=general/SYS=system]
+                            title:'Title',  // (string) Title of the notification
+                            text:'Message', // (string) Message of the notification
+                            sticky:0,       // (boolean) [0/1] Sticky Bit
+                            clear:0,        // (boolean) [0/1] Notification is cleared?
+                            creationDate:'FORMAT?' // (Date) Date of the notification
+                        }
+                    }
+                }
+            }
+
+
+### POST
+
+    ```
+    Duplicate of GET method?
+    ```
+
++ Request (application/json)
+
+        {  
+            "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+            "target":"http:\/\/192.168.1.61:9082\/",
+            "fieldsite_id":1,
+            "data":""
+        }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "notifications":{  
+                        {  
+                            id:'notif',     // (string) Name
+                            shooter:'AG',   // (string) Sender: [AG=aggregator/GUI=gui/EX=explorer/COM=commandscheduler/CON=configurationbuilder/COND=conductor/LOG=logic]
+                            type:'W',       // (string) Level: [W=warning/E=error/IN=info/IM=important/S=success/G=general/SYS=system]
+                            title:'Title',  // (string) Title of the notification
+                            text:'Message', // (string) Message of the notification
+                            sticky:0,       // (boolean) [0/1] Sticky Bit
+                            clear:0,        // (boolean) [0/1] Notification is cleared?
+                            creationDate:'FORMAT?' // (Date) Date of the notification
+                        }
+                    }
+                }
+            }
+
+## Notification Info [/notification/info?notificationId={notificationId}]
+
+### GET
+
++ Parameters
+
+    + notificationId = `` (required, string, `unknown`) ... Identifiant de la notification.
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            ```
+            Execution exception
+            [NullPointerException: null]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_conductor/NotificationCenter.java at line 203.
+            ```
+
+### POST
+
+    ```
+    Duplicate of GET method?
+    ```
+
++ Parameters
+
+    + notificationId = `` (required, string, `unknown`) ... Identifiant de la notification.
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            ```
+            Execution exception
+            [NullPointerException: null]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_conductor/NotificationCenter.java at line 203.
+            ```

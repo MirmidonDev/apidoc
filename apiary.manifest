@@ -1,4 +1,10 @@
 sources/header.apib
-sources/fieldsites.apib
-sources/aggregator.apib
-sources/explorer.apib
+sources/aggregator.apidb
+sources/authentication.apidb
+sources/command.apidb
+sources/configuration.apidb
+sources/explorer.apidb
+sources/fieldsites.apidb
+sources/jobs.apidb
+sources/notifications.apidb
+sources/users.apidb

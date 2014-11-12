@@ -1,0 +1,28 @@
+# Group Jobs
+Jobs de **Mirmidon-unstable API**
+
+## Job Info [/job/info]
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":""
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body 
+
+            ```
+            TODO
+            Action not implemented yet.
+            ```

@@ -1,0 +1,61 @@
+# Group Authentication
+Authentication de **Mirmidon-unstable API**
+
+## Authentication Request [/authentication/request?user={user}&password={password}]
+
+### GET
+
+
+    ```
+    Deprecated?
+    ```
+
++ Parameters
+
+    + user       = `` (required, string, `unknown`) ... Login d'un utilisateur.
+    + password   = `` (required, string, `unknown`) ... Password d'un utilisateur.
+
++ Response 200
+
+    +  Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            Execution exception
+            [NullPointerException: null]
+            In /data/MIRMIDON/unstable/mirmidon/LOGIC/app/controllers/m_conductor/Authenticator.java at line 31.
+
+### POST
+
++ Request (application/json)
+
+            {  
+                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
+                "target":"http:\/\/192.168.1.61:9082\/",
+                "fieldsite_id":1,
+                "data":{  
+                    "user":"demo",
+                    "password":"toto2000"
+                }
+            }
+
+
++ Response 200
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {  
+                "code":0,
+                "message":null,
+                "data":{  
+                    "token":"ea916855-ee98-4429-90bb-aab0d0233b49",
+                    "uid":1
+                }
+            }
+
