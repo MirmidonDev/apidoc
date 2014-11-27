@@ -279,13 +279,20 @@ Command Scheduler de **Mirmidon-unstable API**
 
 ### POST
 
+Lancer un commande
+
+@param:
+    commandId: string // TODO: devrait être un integer
+
 + Request (application/json)
 
             {
-                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
-                "target":"http:\/\/192.168.1.61:9082\/",
+                "token":"3eb15f8c-1440-44c7-b8e7-d031428cb752",
+                "target":"http:\/\/p4x-650.gateworld.fr:9082\/command\/start",
                 "fieldsite_id":1,
-                "data":""
+                "data":{
+                    "commandId": "1"
+                }
             }
 
 + Response 200
@@ -297,22 +304,29 @@ Command Scheduler de **Mirmidon-unstable API**
     + Body
 
             {
-                "code":1538,
-                "message":"Unfound command",
-                "data":null
+                "code": 0,
+                "message": "The command #1 has been launched!",
+                "data": null
             }
 
 ## Command Create [/command/create]
+
+Créer une commande à partir d'une configuration
+
+@param:
+    configirationId: string // TODO: devrait être un integer
 
 ### POST
 
 + Request (application/json)
 
             {
-                "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
-                "target":"http:\/\/192.168.1.61:9082\/",
+                "token":"3eb15f8c-1440-44c7-b8e7-d031428cb752",
+                "target":"http:\/\/p4x-650.gateworld.fr:9082\/command\/create",
                 "fieldsite_id":1,
-                "data":""
+                "data": {
+                    "configurationId": "1" // TODO: Devrait être un integer
+                }
             }
 
 + Response 200
@@ -324,9 +338,9 @@ Command Scheduler de **Mirmidon-unstable API**
     + Body
 
             {
-                "code":1540,
-                "message":"There is no idCommand OR no corresponding configuration.",
-                "data":null
+                "code": 0,
+                "message": "", // TODO: Devrait afficher un message de succès
+                "data": null
             }
 
 ## Command Stop [/command/stop]
