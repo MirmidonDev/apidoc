@@ -14,11 +14,78 @@ Command Scheduler de **Mirmidon-unstable API**
     + Body
 
             {
-                "code":0,
-                "message":null,
-                "data":{
-                    "commands":{
-
+                "code": 0,
+                "message": null,
+                "data": {
+                "commands": {
+                    "1": {
+                        "commandId": 1,
+                        "commandName": "Command-test",
+                        "configurationName": "test",
+                        "commandCreationDate": "26 Nov 2014 10:42:55 GMT",
+                        "commandLaunchDate": "26 Nov 2014 10:43:03 GMT",
+                        "commandEndDate": "26 Nov 2014 10:43:23 GMT",
+                        "model": {
+                            "id": 5,
+                            "name": "Simple testor model",
+                            "description": "Do nothing but use ww3 output to test the preview feature...",
+                            "processName": "moveoutput.sh",
+                            "outputPhenomena": {
+                                "0": {
+                                    "name": "hs",
+                                    "phenomenon_standardName": "hs"
+                                }
+                            }
+                        },
+                        "isParallelJob": false,
+                        "userPriority": 50,
+                        "maxRunDuration": 173200,
+                        "fullContractJson": {
+                            "0": {
+                                "step": "Pre-execution routines",
+                                "article": {
+                                    "code": "Valid"
+                                }
+                            },
+                            "1": {
+                                "step": "Check submission ready",
+                                "article": {
+                                    "code": "Valid"
+                                }
+                            },
+                            "2": {
+                                "step": "Workload submission",
+                                "article": {
+                                    "code": "Valid"
+                                }
+                            },
+                            "3": {
+                                "step": "Post-execution routines",
+                                "article": {
+                                    "code": "Not Valid",
+                                    "info": " (Wed Nov 26 11:43:23 CET 2014): models.util.io.IOOperationException: java.io.IOException: Cannot run program \"ncks\" (in directory \"/home/water/mirmidon/MIRMIDON_FS/configs/1\"): error=2, Aucun fichier ou dossier de ce type\ \  at models.util.io.IOOperation.run(IOOperation.java:108)\ \  at models.util.io.IOOperation.run(IOOperation.java:87)\ \   at models.m_command_scheduler.MCommand.postprocessing(MCommand.java:385)\ \ at models.m_command_scheduler.MCommand.run(MCommand.java:537)\ \    at java.lang.Thread.run(Thread.java:744)\ Caused by: java.io.IOException: Cannot run program \"ncks\" (in directory \"/home/water/mirmidon/MIRMIDON_FS/configs/1\"): error=2, Aucun fichier ou dossier de ce type\ \    at java.lang.ProcessBuilder.start(ProcessBuilder.java:1041)\ \  at java.lang.Runtime.exec(Runtime.java:617)\ \  at java.lang.Runtime.exec(Runtime.java:450)\ \  at models.util.io.ShellCommand.run(ShellCommand.java:186)\ \    at models.util.io.IOOperation.run(IOOperation.java:106)\ \  ... 4 more\ Caused by: java.io.IOException: error=2, Aucun fichier ou dossier de ce type\ \ at java.lang.UNIXProcess.forkAndExec(Native Method)\ \  at java.lang.UNIXProcess.<init>(UNIXProcess.java:135)\ \    at java.lang.ProcessImpl.start(ProcessImpl.java:130)\ \ at java.lang.ProcessBuilder.start(ProcessBuilder.java:1022)\ \  ... 8 more\ "
+                                }
+                            },
+                            "4": {
+                                "step": "Preview-processing",
+                                "article": {
+                                    "code": "Not set"
+                                }
+                            }
+                        },
+                        "isRunning": false,
+                        "isStarted": true,
+                        "isValid": false,
+                        "isFinished": true,
+                        "job": "42",
+                        "jobStatus": "DONE",
+                        "totalTasks": "1",
+                        "tasksPerNode": "1",
+                        "fieldsite": 1,
+                        "configId": 1
+                    },
+                    "2": {
+                        ...
                     }
                 }
             }
