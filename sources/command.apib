@@ -3,9 +3,9 @@ Command Scheduler de **Mirmidon-unstable API**
 
 ## Command List [/command/list]
 
-### GET
-
 Get the list of commands submitted and their info
+
+### GET
 
 + Response 200
 
@@ -91,8 +91,6 @@ Get the list of commands submitted and their info
             }
 
 ### POST
-
-Get the list of commands submitted and their info
 
 + Request (application/json)
 
@@ -190,9 +188,9 @@ Get the list of commands submitted and their info
 
 Get a command and its info
 
-@param int commandId
-
 ### POST
+
+@param int commandId
 
 + Request (application/json)
 
@@ -285,9 +283,9 @@ Get a command and its info
 
 ## Command Start [/command/start]
 
-### POST
-
 Submit a new command from a json array
+
+### POST
 
 @param string commandId // TODO: should be an integer
 
@@ -320,9 +318,9 @@ Submit a new command from a json array
 
 Create a new command from configuration ID
 
-@param string configurationId // TODO: should be an integer
-
 ### POST
+
+@param string configurationId // TODO: should be an integer
 
 + Request (application/json)
 
@@ -353,9 +351,9 @@ Create a new command from configuration ID
 
 Stop a command from a json array
 
-@param string commandId // TODO: should be an integer
-
 ### POST
+
+@param string commandId // TODO: should be an integer
 
 + Request (application/json)
 
@@ -484,9 +482,9 @@ Get Five latest commands inserted in Mirmidon database
 
 Whether the defined command is valid or not
 
-@param int commandId
-
 ### POST
+
+@param int commandId
 
 + Request (application/json)
 
@@ -519,9 +517,9 @@ Whether the defined command is valid or not
 
 Delete the specified command
 
-@param int commandId
-
 ### POST
+
+@param int commandId
 
 + Request (application/json)
 
