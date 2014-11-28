@@ -3,6 +3,8 @@ Configuration Builder de **Mirmidon-unstable API**
 
 ## Models list [/configuration/model/list?ifFieldSite={idFieldSite}]
 
+Get list of availables models
+
 ### GET
 
 + Parameters
@@ -16,66 +18,66 @@ Configuration Builder de **Mirmidon-unstable API**
 
     + Body
 
-            {  
+            {
                 "code":0,
                 "message":null,
-                "data":{  
-                    "models":{  
-                        "0":{  
+                "data":{
+                    "models":{
+                        "0":{
                             "id":7,
                             "name":"Symphonie S25.10 homogeneous wind",
                             "slug":"symphonie_homogeneous_wind",
                             "isAvailable":false,
                             "abstract":"Build a configuration of Symphonie",
-                            "actions":{  
+                            "actions":{
                                 "describe":"/configuration/symphonie/symphonie-homogeneous-wind/describe",
                                 "execute":"/configuration/symphonie/symphonie-homogeneous-wind/execute",
                                 "status":"/configuration/status"
                             }
                         },
-                        "1":{  
+                        "1":{
                             "id":8,
                             "name":"Symphonie S26 tide",
                             "slug":"symphonie-s26-tide",
                             "isAvailable":false,
                             "abstract":"Build a configuration of Symphonie",
-                            "actions":{  
+                            "actions":{
                                 "describe":"/configuration/symphonie/symphonie-s26-tide/describe",
                                 "execute":"/configuration/symphonie/symphonie-s26-tide/execute",
                                 "status":"/configuration/status"
                             }
                         },
-                        "2":{  
+                        "2":{
                             "id":9,
                             "name":"Standard simple Mmodel of Telemac",
                             "slug":"mmodelStandard",
                             "isAvailable":true,
                             "abstract":"Build a configuration of Standard Telemac",
-                            "actions":{  
+                            "actions":{
                                 "describe":"/configuration/telemac/mmodelStandard/describe",
                                 "execute":"/configuration/telemac/mmodelStandard/execute",
                                 "status":"/configuration/status"
                             }
                         },
-                        "3":{  
+                        "3":{
                             "id":10,
                             "name":"Wave Watch III Homogeneous Wind",
                             "slug":"ww3_homogeneous_wind",
                             "isAvailable":true,
                             "abstract":"Build a configuration of WW3 with homogeneous wind",
-                            "actions":{  
+                            "actions":{
                                 "describe":"/configuration/ww3/ww3-homogeneous-wind/describe",
                                 "execute":"/configuration/ww3/ww3-homogeneous-wind/execute",
                                 "status":"/configuration/status"
                             }
                         },
-                        "4":{  
+                        "4":{
                             "id":11,
                             "name":"Simple testor 1",
                             "slug":"testor",
                             "isAvailable":true,
                             "abstract":"Build a simple testor configuration for testing preview and aggregationc",
-                            "actions":{  
+                            "actions":{
                                 "describe":"/configuration/testor/testor-1/describe",
                                 "execute":"/configuration/testor/testor-1/execute",
                                 "status":"/configuration/status"
@@ -86,6 +88,8 @@ Configuration Builder de **Mirmidon-unstable API**
             }
 
 ## Configuration List [/configuration/list]
+
+Get the list of configurations submitted
 
 ### GET
 
@@ -101,17 +105,21 @@ Configuration Builder de **Mirmidon-unstable API**
                 "code": 0,
                 "message": null,
                 "data": {
-                    "configurations": {}
+                    "configurations": {
+                        "1": "test"
+                    }
                 }
             }
 
 ## Configuration info [/configuration/info?idConfig={idConfig}]
 
-### GET 
+Get specified configuration data
+
+### GET
 
 + Parameters
 
-    + idConfig = `` (required, string, `unknown`) ... Identifiant de la configuration (more details please?).
+    + idConfig = `` (required, string, `unknown`) ... Configuration ID //TODO: more details?
 
 + Response 200
 
@@ -121,23 +129,37 @@ Configuration Builder de **Mirmidon-unstable API**
 
     + Body
 
-            {  
-                "code":2,
-                "message":"No configuration with id 1",
-                "data":null
+            {
+                "code": 0,
+                "message": null,
+                "data": {
+                    "id": 1,
+                    "name": "test",
+                    "totaltasks": 1,
+                    "nodes": 1,
+                    "taskpernode": 1,
+                    "creationDate": "26 Nov 2014 10:42:47 GMT",
+                    "fieldsite": "Taïwan",
+                    "isAggregate": false,
+                    "previewImageFiles": { }
+                }
             }
 
 ## Configuration Status [/configuration/status]
 
+Get configuration status of a process
+
 ### POST
+
+@param int processId
 
 + Request (application/json)
 
-            {  
+            {
                 "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
                 "target":"http:\/\/192.168.1.61:9082\/",
                 "fieldsite_id":1,
-                "data":{  
+                "data":{
                     "processId":1
                 }
             }
@@ -150,8 +172,8 @@ Configuration Builder de **Mirmidon-unstable API**
 
     + Body
 
-            {  
-                "data":{  
+            {
+                "data":{
                     "currentStatus":"failed",
                     "currentMessage":"Error during the adding of the aggregation",
                     "currentPourcent":"100"
@@ -162,7 +184,9 @@ Configuration Builder de **Mirmidon-unstable API**
 
 ## Configuration Latest [/configuration/latest]
 
-### POST 
+Get the five latest configurations inserted in Mirmidon database
+
+### POST
 
 + Request (application/json)
 
@@ -172,7 +196,7 @@ Configuration Builder de **Mirmidon-unstable API**
                 "fieldsite_id":1,
                 "data":""
             }
-    
+
 + Response 200
 
     + Headers
@@ -181,15 +205,27 @@ Configuration Builder de **Mirmidon-unstable API**
 
     + Body
 
-            {  
-                "code":0,
-                "message":null,
-                "data":{  
-                    "configurations":"No configurations"
+            {
+                "code": 0,
+                "message": null,
+                "data": {
+                    "configurations": {
+                        "1": {
+                            "id": 1,
+                            "name": "Test 1",
+                            "totaltasks": 1,
+                            "nodes": 1,
+                            "taskpernode": 1,
+                            "creationDate": "27 Nov 2014 14:48:17 GMT",
+                            "fieldsite": "Taïwan",
+                            "isAggregate": false,
+                            "previewImageFiles": { }
+                        }
+                    }
                 }
             }
 
-## Configuration Symfonie Homogenous Wind Describe [/configuration/symphonie/symphonie-homogeneous-wind/describe]
+## Configuration Symphonie Homogenous Wind Describe [/configuration/symphonie/symphonie-homogeneous-wind/describe]
 
 ### GET
 
@@ -199,22 +235,22 @@ Configuration Builder de **Mirmidon-unstable API**
 
             Content-Type : application/json
 
-    + Body 
+    + Body
 
-            {  
+            {
                 "code":0,
                 "message":null,
-                "data":{  
+                "data":{
                     "name":"Symphonie-builder : Symphonie_homogeneous_wind",
                     "abstract":"Builder Symphonie 1 configuration",
-                    "inputs":{  
-                        "BathymetryFile":{  
+                    "inputs":{
+                        "BathymetryFile":{
                             "type":"Aggregation",
                             "id":"BathymetryFile",
                             "name":"bathymetry",
                             "abstract":""
                         },
-                        "TotalTasks":{  
+                        "TotalTasks":{
                             "type":"NumberSlider",
                             "id":"TotalTasks",
                             "name":"TotalTasks",
@@ -223,7 +259,7 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "TotalTasksPerNode":{  
+                        "TotalTasksPerNode":{
                             "type":"NumberSlider",
                             "id":"TotalTasksPerNode",
                             "name":"TotalTasksPerNode",
@@ -232,25 +268,25 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "TimeDuration":{  
+                        "TimeDuration":{
                             "id":"TimeDuration",
                             "name":"TimeDuration",
                             "abstract":"Physical time duration in hours",
                             "type":"Integer"
                         },
-                        "WindDirection":{  
+                        "WindDirection":{
                             "id":"WindDirection",
                             "name":"WindDirection",
                             "abstract":"Wind direction in degrees. (0) North => South , (180) South => North ",
                             "type":"Double"
                         },
-                        "WindVelocity":{  
+                        "WindVelocity":{
                             "id":"WindVelocity",
                             "name":"WindVelocity",
                             "abstract":"Wind velocity in meter per second",
                             "type":"Double"
                         },
-                        "Width":{  
+                        "Width":{
                             "type":"NumberSlider",
                             "id":"Width",
                             "name":"Width",
@@ -259,7 +295,7 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":800,
                             "incrementValue":2
                         },
-                        "Height":{  
+                        "Height":{
                             "type":"NumberSlider",
                             "id":"Height",
                             "name":"Height",
@@ -268,36 +304,36 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":800,
                             "incrementValue":2
                         },
-                        "ConfigurationName":{  
+                        "ConfigurationName":{
                             "type":"String",
                             "id":"ConfigurationName",
                             "name":"ConfigurationName",
                             "abstract":"The name of the configuration"
                         },
-                        "ConfigurationDescription":{  
+                        "ConfigurationDescription":{
                             "type":"String",
                             "id":"ConfigurationDescription",
                             "name":"ConfigurationDescription",
                             "abstract":"The description of the configuration (area, forcings,...)."
                         }
                     },
-                    "outputs":{  
+                    "outputs":{
 
                     }
                 }
             }
 
-## Configuration Symfonie Homogenous Wind Execute [/configuration/symphonie/symphonie-homogeneous-wind/execute]
+## Configuration Symphonie Homogenous Wind Execute [/configuration/symphonie/symphonie-homogeneous-wind/execute]
 
 ### POST
 
 + Request (application/json)
 
-            {  
+            {
                 "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
                 "target":"http:\/\/192.168.1.61:9082\/",
                 "fieldsite_id":1,
-                "data":{  
+                "data":{
                     "data":""
                 }
             }
@@ -308,34 +344,34 @@ Configuration Builder de **Mirmidon-unstable API**
 
             Content-Type: application/json
 
-    + Body 
+    + Body
 
-            {  
+            {
                 "code":2,
                 "message":"Unable to decode the configuration name.",
                 "data":null
             }
 
-## Configuration Symfonie S26-tide Describe [/configuration/symphonie/symphonie-s26-tide/describe]
+## Configuration Symphonie S26-tide Describe [/configuration/symphonie/symphonie-s26-tide/describe]
 
 ### GET
 
 + Response 200
 
-    + Headers 
+    + Headers
 
             Content-Type : application/json
 
     + Body
 
-            {  
+            {
                 "code":0,
                 "message":null,
-                "data":{  
+                "data":{
                     "name":"Symphonie-builder : Symphonie-s26-tide",
                     "abstract":"Build a SYMPHONIE forced by tides and produce the 3D-currents",
-                    "inputs":{  
-                        "TotalTasks":{  
+                    "inputs":{
+                        "TotalTasks":{
                             "type":"NumberSlider",
                             "id":"TotalTasks",
                             "name":"TotalTasks",
@@ -344,7 +380,7 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "TotalTasksPerNode":{  
+                        "TotalTasksPerNode":{
                             "type":"NumberSlider",
                             "id":"TotalTasksPerNode",
                             "name":"TotalTasksPerNode",
@@ -353,72 +389,72 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "BathycoteFile":{  
+                        "BathycoteFile":{
                             "id":"BathycoteFile",
                             "name":"BathycoteFile",
                             "abstract":"Bathycote_in.dat file",
                             "type":"File"
                         },
-                        "NotebookGridFile":{  
+                        "NotebookGridFile":{
                             "id":"NotebookGridFile",
                             "name":"NotebookGridFile",
                             "abstract":"Notebook_grid file",
                             "type":"File"
                         },
-                        "TideForcingPath":{  
+                        "TideForcingPath":{
                             "type":"Aggregation",
                             "id":"TideForcingPath",
                             "name":"tide",
                             "abstract":""
                         },
-                        "StartTime":{  
+                        "StartTime":{
                             "id":"StartTime",
                             "name":"StartTime",
                             "abstract":"The physical start time of the simulation",
                             "type":"Date"
                         },
-                        "EndTime":{  
+                        "EndTime":{
                             "id":"EndTime",
                             "name":"EndTime",
                             "abstract":"The physical end time of the simulation",
                             "type":"Date"
                         },
-                        "GraphOutputPeriodicity":{  
+                        "GraphOutputPeriodicity":{
                             "id":"GraphOutputPeriodicity",
                             "name":"GraphOutputPeriodicity",
                             "abstract":"The periodicity of output graphique generation given in days",
                             "type":"Double"
                         },
-                        "ConfigurationName":{  
+                        "ConfigurationName":{
                             "type":"String",
                             "id":"ConfigurationName",
                             "name":"ConfigurationName",
                             "abstract":"The name of the configuration"
                         },
-                        "ConfigurationDescription":{  
+                        "ConfigurationDescription":{
                             "type":"String",
                             "id":"ConfigurationDescription",
                             "name":"ConfigurationDescription",
                             "abstract":"The description of the configuration (area, forcings,...)."
                         }
                     },
-                    "outputs":{  
+                    "outputs":{
 
                     }
                 }
             }
 
-## Configuration Symfonie S26-tide Execute [/configuration/symphonie/symphonie-s26-tide/execute]
+## Configuration Symphonie S26-tide Execute [/configuration/symphonie/symphonie-s26-tide/execute]
 
-### POST 
+### POST
 
 + Request
 
-            {  
+            {
                 "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
                 "target":"http:\/\/192.168.1.61:9082\/",
                 "fieldsite_id":1,
-                "data":{  
+                "data":{
                     "data":""
                 }
             }
@@ -431,7 +467,7 @@ Configuration Builder de **Mirmidon-unstable API**
 
     + Body
 
-            {  
+            {
                 "code":2,
                 "message":"Unable to decode the configuration name.",
                 "data":null
@@ -439,24 +475,24 @@ Configuration Builder de **Mirmidon-unstable API**
 
 ## Configuration telemac MmodelStandard Describe [/configuration/telemac/mmodelStandard/describe]
 
-### GET 
+### GET
 
 + Response 200
-    
+
     + Headers
 
             Content-Type: application/json
 
     + Body
 
-            {  
+            {
                 "code":0,
                 "message":null,
-                "data":{  
+                "data":{
                     "name":"Telemac-builder : MmodelStandard",
                     "abstract":"Builder Telemac standard configuration",
-                    "inputs":{  
-                        "TotalTasks":{  
+                    "inputs":{
+                        "TotalTasks":{
                             "type":"NumberSlider",
                             "id":"TotalTasks",
                             "name":"TotalTasks",
@@ -465,7 +501,7 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "TotalTasksPerNode":{  
+                        "TotalTasksPerNode":{
                             "type":"NumberSlider",
                             "id":"TotalTasksPerNode",
                             "name":"TotalTasksPerNode",
@@ -474,98 +510,98 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "CasFile":{  
+                        "CasFile":{
                             "id":"CasFile",
                             "name":"CasFile",
                             "abstract":"Configuration file (CAS)",
                             "type":"File"
                         },
-                        "GeoFile":{  
+                        "GeoFile":{
                             "id":"GeoFile",
                             "name":"GeoFile",
                             "abstract":"Mesh file (GEO)",
                             "type":"File"
                         },
-                        "CliFile":{  
+                        "CliFile":{
                             "id":"CliFile",
                             "name":"CliFile",
                             "abstract":"Boundaries (CLI)",
                             "type":"File"
                         },
-                        "LiqFile":{  
+                        "LiqFile":{
                             "id":"LiqFile",
                             "name":"LiqFile",
                             "abstract":"Configuration file (LIQ)",
                             "type":"File"
                         },
-                        "FortranFile":{  
+                        "FortranFile":{
                             "id":"FortranFile",
                             "name":"FortranFile",
                             "abstract":"Fortran file",
                             "type":"File"
                         },
-                        "CoordinateReferenceSystem":{  
+                        "CoordinateReferenceSystem":{
                             "id":"CoordinateReferenceSystem",
                             "name":"CoordinateReferenceSystem",
                             "abstract":"CRS EPSG Code",
                             "type":"String"
                         },
-                        "XOffset":{  
+                        "XOffset":{
                             "id":"XOffset",
                             "name":"XOffset",
                             "abstract":"X offset in the given CRS ",
                             "type":"Double"
                         },
-                        "YOffset":{  
+                        "YOffset":{
                             "id":"YOffset",
                             "name":"YOffset",
                             "abstract":"Y offset in the given CRS",
                             "type":"Double"
                         },
-                        "File1":{  
+                        "File1":{
                             "id":"File1",
                             "name":"File1",
                             "abstract":"Additional File N°1 (file1)",
                             "type":"File"
                         },
-                        "File2":{  
+                        "File2":{
                             "id":"File2",
                             "name":"File2",
                             "abstract":"Additional File N°2 (file2)",
                             "type":"File"
                         },
-                        "File3":{  
+                        "File3":{
                             "id":"File3",
                             "name":"File3",
                             "abstract":"Additional File N°3 (file3)",
                             "type":"File"
                         },
-                        "File4":{  
+                        "File4":{
                             "id":"File4",
                             "name":"File4",
                             "abstract":"Additional File N°4 (file4)",
                             "type":"File"
                         },
-                        "File5":{  
+                        "File5":{
                             "id":"File5",
                             "name":"File5",
                             "abstract":"Additional File N°5 (file5)",
                             "type":"File"
                         },
-                        "ConfigurationName":{  
+                        "ConfigurationName":{
                             "type":"String",
                             "id":"ConfigurationName",
                             "name":"ConfigurationName",
                             "abstract":"The name of the configuration"
                         },
-                        "ConfigurationDescription":{  
+                        "ConfigurationDescription":{
                             "type":"String",
                             "id":"ConfigurationDescription",
                             "name":"ConfigurationDescription",
                             "abstract":"The description of the configuration (area, forcings,...)."
                         }
                     },
-                    "outputs":{  
+                    "outputs":{
 
                     }
                 }
@@ -582,7 +618,7 @@ Configuration Builder de **Mirmidon-unstable API**
                 "target":"http:\/\/192.168.1.61:9082\/",
                 "fieldsite_id":1,
                 "data":{
-                        "data": "" 
+                        "data": ""
                     }
             }
 
@@ -594,7 +630,7 @@ Configuration Builder de **Mirmidon-unstable API**
 
      + Body
 
-            {  
+            {
                 "code":2,
                 "message":"Unable to decode the configuration name.",
                 "data":null
@@ -612,14 +648,14 @@ Configuration Builder de **Mirmidon-unstable API**
 
     + Body
 
-            {  
+            {
                 "code":0,
                 "message":null,
-                "data":{  
+                "data":{
                     "name":"Ww3-builder : Ww3_homogeneous_wind",
                     "abstract":"Builder WW3 1 configuration",
-                    "inputs":{  
-                        "TotalTasksPerNode":{  
+                    "inputs":{
+                        "TotalTasksPerNode":{
                             "type":"NumberSlider",
                             "id":"TotalTasksPerNode",
                             "name":"TotalTasksPerNode",
@@ -628,7 +664,7 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "TotalTasks":{  
+                        "TotalTasks":{
                             "type":"NumberSlider",
                             "id":"TotalTasks",
                             "name":"TotalTasks",
@@ -637,62 +673,62 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "StartTime":{  
+                        "StartTime":{
                             "id":"StartTime",
                             "name":"StartTime",
                             "abstract":"Physical start time",
                             "type":"Date"
                         },
-                        "EndTime":{  
+                        "EndTime":{
                             "id":"EndTime",
                             "name":"EndTime",
                             "abstract":"Physical end time",
                             "type":"Date"
                         },
-                        "WindDirection":{  
+                        "WindDirection":{
                             "id":"WindDirection",
                             "name":"WindDirection",
                             "abstract":"Wind direction in degrees. (0) North => South , (180) South => North ",
                             "type":"Double"
                         },
-                        "WindVelocity":{  
+                        "WindVelocity":{
                             "id":"WindVelocity",
                             "name":"WindVelocity",
                             "abstract":"Wind velocity in meter per second",
                             "type":"Double"
                         },
-                        "BathymetryFile":{  
+                        "BathymetryFile":{
                             "id":"BathymetryFile",
                             "name":"BathymetryFile",
                             "abstract":"Bathymetry file from MFieldSite (not yet converted)",
                             "type":"File"
                         },
-                        "Width":{  
+                        "Width":{
                             "id":"Width",
                             "name":"Width",
                             "abstract":"Desired grid size for computation on the X axis (latitude)",
                             "type":"Integer"
                         },
-                        "Height":{  
+                        "Height":{
                             "id":"Height",
                             "name":"Height",
                             "abstract":"Desired grid size for computation on the Y axis (longitude)",
                             "type":"Integer"
                         },
-                        "ConfigurationName":{  
+                        "ConfigurationName":{
                             "type":"String",
                             "id":"ConfigurationName",
                             "name":"ConfigurationName",
                             "abstract":"The name of the configuration"
                         },
-                        "ConfigurationDescription":{  
+                        "ConfigurationDescription":{
                             "type":"String",
                             "id":"ConfigurationDescription",
                             "name":"ConfigurationDescription",
                             "abstract":"The description of the configuration (area, forcings,...)."
                         }
                     },
-                    "outputs":{  
+                    "outputs":{
 
                     }
                 }
@@ -721,7 +757,7 @@ Configuration Builder de **Mirmidon-unstable API**
 
     + Body
 
-            {  
+            {
                 "code":2,
                 "message":"Unable to decode the configuration name.",
                 "data":null
@@ -730,21 +766,21 @@ Configuration Builder de **Mirmidon-unstable API**
 ## Configuration testor 1 Describe [/configuration/testor/testor-1/describe]
 
 + Response 200
-    
+
     + Headers
 
             Content-Type : application/json
 
     + Body
 
-            {  
+            {
                 "code":0,
                 "message":null,
-                "data":{  
+                "data":{
                     "name":"Testor-builder : Testor",
                     "abstract":"Builder WW3 1 configuration",
-                    "inputs":{  
-                        "TotalTasksPerNode":{  
+                    "inputs":{
+                        "TotalTasksPerNode":{
                             "type":"NumberSlider",
                             "id":"TotalTasksPerNode",
                             "name":"TotalTasksPerNode",
@@ -753,7 +789,7 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "TotalTasks":{  
+                        "TotalTasks":{
                             "type":"NumberSlider",
                             "id":"TotalTasks",
                             "name":"TotalTasks",
@@ -762,20 +798,20 @@ Configuration Builder de **Mirmidon-unstable API**
                             "maximalValue":64,
                             "incrementValue":2
                         },
-                        "ConfigurationName":{  
+                        "ConfigurationName":{
                             "type":"String",
                             "id":"ConfigurationName",
                             "name":"ConfigurationName",
                             "abstract":"The name of the configuration"
                         },
-                        "ConfigurationDescription":{  
+                        "ConfigurationDescription":{
                             "type":"String",
                             "id":"ConfigurationDescription",
                             "name":"ConfigurationDescription",
                             "abstract":"The description of the configuration (area, forcings,...)."
                         }
                     },
-                    "outputs":{  
+                    "outputs":{
 
                     }
                 }
@@ -787,11 +823,11 @@ Configuration Builder de **Mirmidon-unstable API**
 
 + Request (application/json)
 
-            {  
+            {
                 "token":"20eebea3-ed83-4495-a3a0-5110c8695ae3",
                 "target":"http:\/\/192.168.1.61:9082\/",
                 "fieldsite_id":1,
-                "data":{  
+                "data":{
                     "data":""
                 }
             }
@@ -804,7 +840,7 @@ Configuration Builder de **Mirmidon-unstable API**
 
     + Body
 
-            {  
+            {
                 "code":2,
                 "message":"Unable to decode the configuration name.",
                 "data":null
