@@ -165,3 +165,35 @@ Users de **Mirmidon-unstable API**
                 }
             }
 
+
+## Add User in DB [/user]
+
+### PUT
+
++ Request (application/json)
+
+    + Headers
+
+            Content-Type : application/json
+
+    + Body
+
+            {
+              "username": "username",
+              "password": "password",
+              "name": "name",
+              "email": "name@organization",
+              "surname": "surname"
+            }
+
++ Response 200
+
+    + Body
+
+
++ Response 403
+
+    + Body
+
+            ERROR executing DML bindLog[] error[ERROR: duplicate key value violates unique constraint "uq_muser_username"\n   Detail: Key (username)=(username) already exists.]
+
